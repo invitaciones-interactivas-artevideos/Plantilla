@@ -307,28 +307,22 @@
          ========================================== -->
     <script>
         const CONFIG = {
-            // PALETAS DISPONIBLES: "olive", "navy", "rose", "terracotta", "champagne", "burgundy", "emerald", "dusty-blue"
             theme: "champagne", 
-            
-            // TEXTOS Y FECHAS PRINCIPALES
             names: "Fernanda & Gustavo",
             dateStr: "14 . 11 . 2026",
-            dateTarget: "Nov 14, 2026 16:30:00", // Para la cuenta regresiva real
+            dateTarget: "Nov 14, 2026 16:30:00", 
             
-            // CONFIGURACIÓN DE AUDIO / MÚSICA (Suelto en la raíz)
             music: {
                 file: "musica.mp3", 
                 title: "Nuestra Canción.mp3"
             },
             
-            // ENLACES A IMÁGENES (Sueltas en la raíz de tu repositorio de GitHub)
             images: {
                 main: "foto1.jpg", 
                 second: "foto2.jpg",
                 footer: "foto3.jpg"
             },
 
-            // DETALLES DE LOGÍSTICA
             ceremony: {
                 time: "16:30 horas",
                 place: "PARROQUIA SAN FRANCISCO",
@@ -342,43 +336,33 @@
                 mapLink: "https://maps.google.com"
             },
 
-            // CÓDIGO DE VESTIMENTA (DRESS CODE)
             dressCode: {
                 style: "Formal / Elegante",
                 note: "Agradecemos evitar prendas de color blanco, beige o tonos similares."
             },
 
-            // DATOS DE REGALOS / COLECTA Y CUENTA BANCARIA
             gifts: {
                 text: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, te compartimos nuestros datos:",
-                
-                // CONTROL DEL CÓDIGO QR (true para mostrar, false para ocultar)
                 showQR: false, 
                 qrImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CuentaBancariaBoda",
-                
-                // Datos de tu cuenta bancaria
                 bankName: "BROU",
                 titular: "Fernanda & Gustavo",
                 accountNumber: "0123456789"
             },
 
-            // FORMULARIO DE CONFIRMACIÓN (GOOGLE FORM)
             rsvp: {
                 deadline: "01 de Noviembre de 2026",
                 googleFormLink: "https://forms.google.com" 
             },
 
-            // PLATAFORMAS EXTRA
             playlistLink: "https://open.spotify.com", 
 
-            // MÓDULOS ACTIVABLES O DESACTIVABLES (true = Mostrar, false = Ocultar)
             features: {
                 showItinerary: true, 
                 showInstagram: true,
                 instagramLink: "https://instagram.com", 
                 
                 showPhotoAlbum: true,
-                // NUEVO: Enlace a formulario para que suban fotos
                 photoUploadLink: "https://forms.google.com", 
                 albumPhotos: [
                     "foto4.jpg",
@@ -387,7 +371,6 @@
                     "foto7.jpg"
                 ],
 
-                // Secciones vacías adicionales
                 showExtraSection1: false, 
                 extraSection1Title: "Hoteles Recomendados",
                 extraSection1Content: "1. Hotel Central (Tel: 123456)<br>2. Hostal El Alba (Tel: 789012)",
@@ -527,18 +510,16 @@
             </div>
         </div>
 
-        <!-- SECCIÓN 5: REGALOS (CON CÓDIGO QR OCULTABLE Y DATOS BANCARIOS) -->
+        <!-- SECCIÓN 5: REGALOS -->
         <div class="section-dark">
             <i class="fas fa-gift" style="font-size: 2.5em; margin-bottom: 15px;"></i>
             <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Mesa de Regalos</h2>
             <p style="font-size: 0.9em; padding: 0 15px; margin: 20px 0 30px 0; font-weight: 300;" id="txt-gifts-text">Mensaje</p>
             
-            <!-- Contenedor del QR (Controlado desde CONFIG.gifts.showQR) -->
             <div id="qr-container" style="background: #ffffff; display: inline-block; padding: 15px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
                 <img id="img-gifts-qr" src="" alt="Código QR Colecta" style="width: 150px; height: 150px; display: block;">
             </div>
 
-            <!-- Tarjeta Interactiva con Datos Bancarios -->
             <div class="bank-card">
                 <div class="bank-row"><strong>Banco</strong><div class="bank-value" id="txt-bank-name">Cargando...</div></div>
                 <div class="bank-row"><strong>Titular</strong><div class="bank-value" id="txt-bank-titular">Cargando...</div></div>
@@ -552,7 +533,7 @@
             </div>
         </div>
 
-        <!-- SECCIONES VACÍAS ADICIONALES (ACTIVABLES DESDE CONFIG) -->
+        <!-- SECCIONES VACÍAS ADICIONALES -->
         <div id="extra-sec-1" class="section-light hidden">
             <h2 class="script-font" style="font-size: 3em;" id="txt-extra1-title">Sección Extra 1</h2>
             <p style="font-size: 0.9em; margin-top: 15px;" id="txt-extra1-content">Contenido...</p>
@@ -563,7 +544,7 @@
             <p style="font-size: 0.9em; margin-top: 15px;" id="txt-extra2-content">Contenido...</p>
         </div>
 
-        <!-- SECCIÓN 6: RSVP / CONFIRMACIÓN DE ASISTENCIA -->
+        <!-- SECCIÓN 6: RSVP / CONFIRMACIÓN -->
         <div class="section-dark">
             <i class="fas fa-envelope-open-text" style="font-size: 2.5em; margin-bottom: 15px;"></i>
             <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Confirmación de Asistencia</h2>
@@ -578,27 +559,21 @@
                 <p style="font-size: 0.85em; color: #555;">Rogamos puntualidad al evento.<br>Seguir las indicaciones del personal organizador.</p>
             </div>
 
-            <!-- Playlist y Filtro Instagram -->
             <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; margin: 35px 0;">
                 <a href="#" id="lnk-playlist" class="btn" target="_blank" style="margin-top:0; width:85%; max-width:300px;"><i class="fab fa-spotify" style="color: #1DB954; margin-right: 8px;"></i> Playlist de la Boda</a>
                 <a href="#" id="sec-instagram" class="btn hidden" target="_blank" style="margin-top:0; width:85%; max-width:300px;"><i class="fab fa-instagram" style="color: #E1306C; margin-right: 8px;"></i> Compartir en Instagram</a>
             </div>
 
-            <!-- Álbum fotográfico (Y NUEVO BOTÓN PARA SUBIR FOTOS) -->
             <div id="sec-photo-album" class="hidden" style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 45px;">
                 <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Nuestra Galería</h2>
                 <p style="font-size: 0.85em; color: #666; margin-bottom: 25px;">Un vistazo a nuestros mejores momentos</p>
                 
-                <div class="photo-grid" id="grid-photos-container">
-                    <!-- Las fotos se inyectan dinámicamente -->
-                </div>
+                <div class="photo-grid" id="grid-photos-container"></div>
                 
-                <!-- BOTÓN REEMPLAZADO: Subir fotos en lugar de descargar -->
                 <p style="font-size: 0.8em; margin-top: 25px; color: #555;">¡Ayúdanos a capturar cada instante!</p>
                 <a href="#" id="lnk-photo-upload" class="btn" target="_blank"><i class="fas fa-camera" style="margin-right: 8px;"></i> Subir Fotos de la Fiesta</a>
             </div>
 
-            <!-- Mensaje de Cierre -->
             <p style="font-size: 0.85em; letter-spacing: 4px; margin-top: 80px; font-weight: 400; color: var(--primary-color);">CADA DETALLE ES MEJOR CONTIGO</p>
             <h2 class="script-font" style="font-size: 4em; margin: 10px 0 45px 0; line-height: 1;">¡Te esperamos!</h2>
 
@@ -610,30 +585,34 @@
     </div>
 
     <!-- ==========================================
-         LÓGICA JAVASCRIPT PRINCIPAL
+         LÓGICA JAVASCRIPT CORREGIDA Y COMPLETA
          ========================================== -->
     <script>
         let playing = false;
         let toggleMusic = () => {};
 
-        // Animación del sobre realista
+        // 1. REPARADO: Nombre de función alineado con el HTML y selector corregido a '.sobre-wrapper'
         function abrirInvitacion() {
+            const sobreContenedor = document.querySelector('.sobre-wrapper');
             const sobrePantalla = document.getElementById('pantalla-sobre');
-            if (sobrePantalla) {
-                sobrePantalla.classList.add('abriendo');
+            
+            if (sobreContenedor) {
+                sobreContenedor.classList.add('abriendo');
             }
             
             toggleMusic(true);
             
-            // Da tiempo a que se vea la animación 3D del sobre antes de desvanecerlo
             setTimeout(() => {
                 if (sobrePantalla) {
-                    sobrePantalla.classList.add('ocultar-sobre');
+                    sobrePantalla.style.opacity = '0';
+                    sobrePantalla.style.transition = 'opacity 0.8s ease';
+                    setTimeout(() => {
+                        sobrePantalla.classList.add('ocultar-sobre');
+                    }, 800);
                 }
-            }, 1200);
+            }, 1400); 
         }
 
-        // Copiado de cuenta bancaria
         function copiarDatosBancarios(event) {
             event.stopPropagation(); 
             const cuentaTexto = document.getElementById('txt-bank-account').innerText;
@@ -646,14 +625,11 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Aplicar Tema
             document.body.className = `theme-${CONFIG.theme}`;
 
-            // Textos del sobre exterior
             document.getElementById('sobre-txt-names').innerText = CONFIG.names;
             document.getElementById('sobre-txt-date').innerText = CONFIG.dateStr;
 
-            // Inyectar Textos de CONFIG
             document.getElementById('txt-names').innerText = CONFIG.names;
             document.getElementById('txt-date').innerText = CONFIG.dateStr;
             
@@ -669,10 +645,8 @@
 
             document.getElementById('txt-dress-style').innerText = CONFIG.dressCode.style;
             document.getElementById('txt-dress-note').innerText = CONFIG.dressCode.note;
-            
             document.getElementById('txt-gifts-text').innerText = CONFIG.gifts.text;
             
-            // Lógica para mostrar/ocultar el QR
             if (CONFIG.gifts.showQR) {
                 document.getElementById('qr-container').classList.remove('hidden');
                 document.getElementById('img-gifts-qr').src = CONFIG.gifts.qrImage;
@@ -680,7 +654,6 @@
                 document.getElementById('qr-container').classList.add('hidden');
             }
 
-            // Datos bancarios
             document.getElementById('txt-bank-name').innerText = CONFIG.gifts.bankName;
             document.getElementById('txt-bank-titular').innerText = CONFIG.gifts.titular;
             document.getElementById('txt-bank-account').innerText = CONFIG.gifts.accountNumber;
@@ -689,24 +662,19 @@
             document.getElementById('lnk-rsvp-form').href = CONFIG.rsvp.googleFormLink;
             document.getElementById('lnk-playlist').href = CONFIG.playlistLink;
 
-            // Imágenes
             document.getElementById('img-main').src = CONFIG.images.main;
             document.getElementById('img-second').src = CONFIG.images.second;
             document.getElementById('img-footer').src = CONFIG.images.footer;
 
-            // Módulos Activables
             if (CONFIG.features.showItinerary) document.getElementById('sec-itinerary').classList.remove('hidden');
             if (CONFIG.features.showInstagram) {
                 const igBtn = document.getElementById('sec-instagram');
                 igBtn.classList.remove('hidden'); igBtn.href = CONFIG.features.instagramLink;
             }
 
-            // Álbum de fotos y Formulario de Subida
             if (CONFIG.features.showPhotoAlbum) {
                 const albumSec = document.getElementById('sec-photo-album');
                 albumSec.classList.remove('hidden');
-                
-                // Enlaza el botón nuevo al Google Form
                 document.getElementById('lnk-photo-upload').href = CONFIG.features.photoUploadLink;
                 
                 const grid = document.getElementById('grid-photos-container');
@@ -716,7 +684,6 @@
                 });
             }
 
-            // Secciones Extra
             if (CONFIG.features.showExtraSection1) {
                 document.getElementById('extra-sec-1').classList.remove('hidden');
                 document.getElementById('txt-extra1-title').innerText = CONFIG.features.extraSection1Title;
@@ -728,23 +695,44 @@
                 document.getElementById('txt-extra2-content').innerHTML = CONFIG.features.extraSection2Content;
             }
 
-            // Música
             const audio = document.getElementById('audio-player');
             const playBtn = document.getElementById('music-btn');
             document.getElementById('txt-music-title').innerText = CONFIG.music.title;
             audio.src = CONFIG.music.file;
             
             toggleMusic = (forcePlay = false) => {
-                if (playing && !forcePlay) { audio.pause(); playBtn.classList.replace('fa-pause-circle', 'fa-play-circle'); playing = false; } 
-                else { audio.play().then(() => { playBtn.classList.replace('fa-play-circle', 'fa-pause-circle'); playing = true; }).catch(()=>{}); }
+                if (playing && !forcePlay) { 
+                    audio.pause(); playBtn.classList.replace('fa-pause-circle', 'fa-play-circle'); playing = false; 
+                } else { 
+                    audio.play().then(() => { playBtn.classList.replace('fa-play-circle', 'fa-pause-circle'); playing = true; }).catch(()=>{}); 
+                }
             };
             playBtn.addEventListener('click', () => toggleMusic(false));
 
-            // Cuenta Regresiva
             const targetTime = new Date(CONFIG.dateTarget).getTime();
             setInterval(() => {
-                const diff = targetTime - new Date().getTime();
-                if (diff < 0) return;
-                document.getElementById("cd-days").innerText = Math.floor(diff / 86400000).toString().padStart(2, '0');
-                document.getElementById("cd-hours").innerText = Math.floor((diff % 86400000) / 3600000).toString().padStart(2, '0');
-                document.getElementById("cdNormally I can help with things like this, but I don't seem to have access to that content. You can try again or ask me for something else.
+                const now = new Date().getTime();
+                const diff = targetTime - now;
+                
+                if (diff <= 0) {
+                    document.getElementById("cd-days").innerText = "00";
+                    document.getElementById("cd-hours").innerText = "00";
+                    document.getElementById("cd-mins").innerText = "00";
+                    document.getElementById("cd-secs").innerText = "00";
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                document.getElementById("cd-days").innerText = days.toString().padStart(2, '0');
+                document.getElementById("cd-hours").innerText = hours.toString().padStart(2, '0');
+                document.getElementById("cd-mins").innerText = mins.toString().padStart(2, '0');
+                document.getElementById("cd-secs").innerText = secs.toString().padStart(2, '0');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
