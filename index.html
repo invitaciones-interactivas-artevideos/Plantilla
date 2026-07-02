@@ -68,7 +68,90 @@
             --env-seal-bg: #d4af37; 
             --env-seal-icon: #ffffff;
         }
+/* 4. ROYAL PURPLE: Elegancia y lujo */
+body.theme-royal {
+    --primary-color: #4a148c;
+    --secondary-color: #f3e5f5;
+    --text-dark: #2d004d;
+    --text-light: #ffffff;
+    --accent-color: #ffd700;
+    --card-bg: #ffffff;
+    --env-screen-bg: #e1bee7;
+    --env-text-color: #4a148c;
+    --env-paper-base: #7b1fa2;
+    --env-paper-solapa: #6a1b9a;
+    --env-paper-espalda: #ce93d8;
+    --env-seal-bg: #ffd700; 
+    --env-seal-icon: #4a148c;
+}
 
+/* 5. BOHO TERRA: Cálido, orgánico y rústico */
+body.theme-boho {
+    --primary-color: #a0522d;
+    --secondary-color: #fdf5e6;
+    --text-dark: #3e2723;
+    --text-light: #ffffff;
+    --accent-color: #d2b48c;
+    --card-bg: #ffffff;
+    --env-screen-bg: #f5efe6;
+    --env-text-color: #5d4037;
+    --env-paper-base: #d2b48c;
+    --env-paper-solapa: #bc8f8f;
+    --env-paper-espalda: #eaddca;
+    --env-seal-bg: #a0522d; 
+    --env-seal-icon: #ffffff;
+}
+
+/* 6. SERENITY BLUE: Moderno, limpio y sofisticado */
+body.theme-serenity {
+    --primary-color: #5e81ac;
+    --secondary-color: #eceff4;
+    --text-dark: #2e3440;
+    --text-light: #ffffff;
+    --accent-color: #88c0d0;
+    --card-bg: #ffffff;
+    --env-screen-bg: #d8dee9;
+    --env-text-color: #434c5e;
+    --env-paper-base: #81a1c1;
+    --env-paper-solapa: #5e81ac;
+    --env-paper-espalda: #e5e9f0;
+    --env-seal-bg: #88c0d0; 
+    --env-seal-icon: #ffffff;
+}
+
+/* 7. SUNSET PEACH: Romántico, juvenil y cálido */
+body.theme-sunset {
+    --primary-color: #ff7e5f;
+    --secondary-color: #fff5e6;
+    --text-dark: #4d2c22;
+    --text-light: #ffffff;
+    --accent-color: #feb47b;
+    --card-bg: #ffffff;
+    --env-screen-bg: #ffe0cc;
+    --env-text-color: #d35400;
+    --env-paper-base: #ff9a8b;
+    --env-paper-solapa: #ff7e5f;
+    --env-paper-espalda: #ffe0cc;
+    --env-seal-bg: #d35400; 
+    --env-seal-icon: #ffffff;
+}
+
+/* 8. EMERALD NIGHT: Lujoso, profundo y formal */
+body.theme-emerald {
+    --primary-color: #064e3b;
+    --secondary-color: #ecfdf5;
+    --text-dark: #022c22;
+    --text-light: #ffffff;
+    --accent-color: #facc15;
+    --card-bg: #ffffff;
+    --env-screen-bg: #d1fae5;
+    --env-text-color: #064e3b;
+    --env-paper-base: #10b981;
+    --env-paper-solapa: #059669;
+    --env-paper-espalda: #a7f3d0;
+    --env-seal-bg: #facc15; 
+    --env-seal-icon: #064e3b;
+}
         /* =========================================
            ESTILOS GENERALES Y LAYOUT
            ========================================= */
@@ -152,7 +235,7 @@
     <script>
         const CONFIG = {
             // ELIGE TU TEMA AQUÍ: "champagne", "navy", o "rose"
-            theme: "champagne", 
+            theme: "BOHO TERRA", 
             
             names: "Fernanda & Gustavo",
             dateStr: "14 . 11 . 2026",
@@ -254,7 +337,7 @@
         }
 
         .nombres-cabecera-sobre {
-            font-size: 2.8em; color: var(--env-text-color); margin-bottom: 20px;
+            font-size: 2.2em; color: var(--env-text-color); margin-bottom: 20px;
             text-shadow: 1px 1px 1px rgba(255,255,255,0.6); opacity: 0.9;
         }
 
@@ -424,7 +507,7 @@
 
             <div style="margin-bottom: 40px;">
                 <i class="fas fa-glass-cheers" style="font-size: 2.5em; color: var(--primary-color); margin-bottom: 15px;"></i>
-                <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Recepción</h2>
+                <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Fiesta</h2>
                 <p class="serif-font" style="font-size: 1.5em; margin: 10px 0; font-weight: 600;" id="txt-reception-time">--:--</p>
                 <p style="font-weight: 600; font-size: 0.95em; letter-spacing: 1px; color: var(--primary-color);" id="txt-reception-place">LUGAR</p>
                 <p style="font-size: 0.9em; color: #666; max-width: 300px; margin: 5px auto;" id="txt-reception-addr">Dirección</p>
