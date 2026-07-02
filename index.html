@@ -11,11 +11,11 @@
     
     <style>
         /* ==========================================================================
-           SISTEMA DE TEMAS AVANZADO (PROPIEDADES DINÁMICAS PARA INVITACIÓN Y SOBRE)
+           SISTEMA DE TEMAS AVANZADO
            ========================================================================== */
         :root { /* Valores base */ }
 
-        /* 1. TEMA CHAMPAGNE: Boda Botánica Tradicional (Estilo Ignacio & Abril) */
+        /* 1. TEMA CHAMPAGNE: Boda Botánica Tradicional */
         body.theme-champagne {
             --primary-color: #6b705c;
             --secondary-color: #fcfbf8;
@@ -29,11 +29,11 @@
             --env-paper-base: #dfdbd3;
             --env-paper-solapa: #d6d1c7;
             --env-paper-espalda: #eae7e1;
-            --env-seal-bg: #556b2f; /* Verde Oliva */
+            --env-seal-bg: #556b2f; 
             --env-seal-icon: rgba(255,255,255,0.85);
         }
 
-        /* 2. TEMA NAVY: 15 Años / Boda Real Azulada (Estilo Tiziana) */
+        /* 2. TEMA NAVY: 15 Años / Boda Elegante Azul */
         body.theme-navy {
             --primary-color: #1b263b;
             --secondary-color: #f0f2f5;
@@ -47,11 +47,11 @@
             --env-paper-base: #415a77;
             --env-paper-solapa: #34495e;
             --env-paper-espalda: #5c748d;
-            --env-seal-bg: #b0b7bd; /* Lacre Plateado */
+            --env-seal-bg: #b0b7bd; 
             --env-seal-icon: #1b263b;
         }
 
-        /* 3. TEMA ROSE: Estilo Romántico / Quinceañera Dulce */
+        /* 3. TEMA ROSE: Estilo Romántico / Quinceañera */
         body.theme-rose {
             --primary-color: #b56576;
             --secondary-color: #fff0f3;
@@ -65,7 +65,7 @@
             --env-paper-base: #e5989b;
             --env-paper-solapa: #d5888b;
             --env-paper-espalda: #f2b5b7;
-            --env-seal-bg: #d4af37; /* Lacre Dorado Metálico */
+            --env-seal-bg: #d4af37; 
             --env-seal-icon: #ffffff;
         }
 
@@ -151,7 +151,7 @@
          ========================================== -->
     <script>
         const CONFIG = {
-            // ELIGE TU TEMA AQUÍ: "champagne" (Boda Eucalipto), "navy" (15 años Azul Mariposa), o "rose" (Rosa romántico)
+            // ELIGE TU TEMA AQUÍ: "champagne", "navy", o "rose"
             theme: "champagne", 
             
             names: "Fernanda & Gustavo",
@@ -176,19 +176,17 @@
     </script>
 
     <!-- ==========================================
-         SOBRE DIGITAL MEJORADO (TEXTURAS Y ELEMENTOS FLOTANTES)
+         SOBRE DIGITAL SIN FALLAS (FIXED)
          ========================================== -->
     <div id="pantalla-sobre" onclick="abrirInvitacion()">
         <div class="fondo-sobre-patron">
-            
-            <!-- Nombres flotantes sobre el lienzo claro -->
             <h2 class="script-font nombres-cabecera-sobre" id="sobre-txt-names">Nombres</h2>
             
             <div class="sobre-wrapper">
                 
-                <!-- CAPA FLOTANTE TRASERA DETRÁS DEL SOBRE (Se controla vía CSS según el tema) -->
+                <!-- Decoración Trasera -->
                 <div class="decoracion-background">
-                    <!-- HOJAS BOTÁNICAS (Para bodas / Temas naturales) -->
+                    <!-- Hojas -->
                     <svg class="elemento-deco rama-izq" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50,90 Q32,55 18,25" stroke="#778a71" stroke-width="1.2" fill="none"/>
                         <path d="M18,25 Q12,20 20,15 Q28,18 18,25" fill="#9cb097" opacity="0.85"/>
@@ -201,8 +199,7 @@
                         <path d="M72,42 Q80,38 75,30 Q67,32 72,42" fill="#a9bfa4" opacity="0.8"/>
                         <path d="M62,62 Q70,58 66,48 Q57,50 62,62" fill="#8b9e86" opacity="0.9"/>
                     </svg>
-
-                    <!-- MARIPOSAS MÁGICAS (Para 15 años / Tema Navy o Rose) -->
+                    <!-- Mariposas -->
                     <svg class="elemento-deco mariposa-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50,50 Q30,20 25,35 Q20,50 50,55 Q20,65 35,80 Q50,60 50,50 Q70,20 75,35 Q80,50 50,55 Q80,65 65,80 Q50,60 50,50" fill="currentColor" opacity="0.5"/>
                     </svg>
@@ -211,10 +208,9 @@
                     </svg>
                 </div>
 
-                <!-- Partes físicas estructurales del sobre -->
+                <!-- Capas del Sobre Físico -->
                 <div class="sobre-espalda textura-papel-real"></div>
                 
-                <!-- Tarjeta interna que emerge -->
                 <div class="sobre-tarjeta textura-papel-real">
                     <span>Invitación Especial</span>
                     <h3 class="serif-font" id="sobre-txt-date" style="font-style: italic; font-size: 1.1em; margin: 5px 0;">00 . 00 . 0000</h3>
@@ -222,9 +218,12 @@
                     <i class="fas fa-angle-double-up" style="font-size: 0.8em; opacity: 0.4;"></i>
                 </div>
                 
+                <!-- Frente reconstruido para cubrir laterales -->
                 <div class="sobre-frente textura-papel-real"></div>
                 
-                <div class="sobre-solapa textura-papel-real">
+                <!-- Solapa reconstruida para proteger el sello -->
+                <div class="sobre-solapa">
+                    <div class="sobre-solapa-forma textura-papel-real"></div>
                     <div class="sello-lacre-premium">
                         <div class="sello-relieve"><i class="fas fa-heart"></i></div>
                     </div>
@@ -236,7 +235,7 @@
     </div>
 
     <!-- ==========================================
-         ESTILOS INTERNOS EXCLUSIVOS DEL SOBRE REALISTA
+         ESTILOS CORREGIDOS DEL SOBRE
          ========================================== -->
     <style>
         #pantalla-sobre {
@@ -251,14 +250,12 @@
             width: 100%; height: 100%; display: flex; flex-direction: column;
             justify-content: center; align-items: center; position: relative;
             background-color: var(--env-screen-bg);
-            /* Ruido sutil para simular textura de lienzo de fondo */
             background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23a)' opacity='0.035'/%3E%3C/svg%3E");
         }
 
         .nombres-cabecera-sobre {
             font-size: 2.8em; color: var(--env-text-color); margin-bottom: 20px;
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
-            opacity: 0.9;
+            text-shadow: 1px 1px 1px rgba(255,255,255,0.6); opacity: 0.9;
         }
 
         .texto-instruccion-sobre {
@@ -272,52 +269,64 @@
             filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
         }
 
-        /* Capas del papel con micro-porosidad */
         .textura-papel-real {
             background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='4'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23b)' opacity='0.05'/%3E%3C/svg%3E");
         }
 
+        /* 1. ESPALDA */
         .sobre-espalda {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--env-paper-espalda); border-radius: 4px;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+            z-index: 1;
         }
 
+        /* 2. TARJETA */
         .sobre-tarjeta {
             position: absolute; top: 8%; left: 4%; width: 92%; height: 84%;
             background-color: #ffffff; border-radius: 2px;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             padding: 20px; z-index: 2; border: 1px solid rgba(0,0,0,0.02);
             box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            /* Demora de 0.3s para darle tiempo a la solapa de abrirse antes de subir */
+            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
         }
         .sobre-tarjeta span { font-size: 0.65em; letter-spacing: 2px; text-transform: uppercase; color: #888; }
 
+        /* 3. FRENTE (Corregido para tapar 100% de los bordes laterales) */
         .sobre-frente {
-            position: absolute; bottom: 0; left: 0; width: 100%; height: 66%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--env-paper-base);
-            clip-path: polygon(0 0, 50% 35%, 100% 0, 100% 100%, 0 100%);
-            z-index: 3; border-bottom-left-radius: 4px; border-bottom-right-radius: 4px;
+            /* Este polígono dibuja las aletas laterales y la de abajo en una sola pieza continua */
+            clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
+            z-index: 3; border-radius: 4px;
             box-shadow: inset 0 10px 20px -10px rgba(0,0,0,0.15);
         }
 
+        /* 4. SOLAPA CONTENEDORA (Ya no corta al sello) */
         .sobre-solapa {
-            position: absolute; top: 0; left: 0; width: 100%; height: 53%;
-            background-color: var(--env-paper-solapa);
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            position: absolute; top: 0; left: 0; width: 100%; height: 55%;
             z-index: 4; transform-origin: top;
-            transition: transform 1.1s cubic-bezier(0.4, 0, 0.2, 1);
-            border-top-left-radius: 4px; border-top-right-radius: 4px;
+            /* La solapa reacciona inmediato, el z-index demora 0.3s para meterse tras la tarjeta justo a tiempo */
+            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.3s;
             filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
         }
 
-        /* Lacre Orgánico */
+        /* 5. FORMA DE LA SOLAPA (El triángulo físico) */
+        .sobre-solapa-forma {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--env-paper-solapa);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            border-top-left-radius: 4px; border-top-right-radius: 4px;
+        }
+
+        /* 6. SELLO REDONDO INTACTO */
         .sello-lacre-premium {
             position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
             width: 50px; height: 50px;
             background: var(--env-seal-bg); border-radius: 50%;
             box-shadow: 0 3px 6px rgba(0,0,0,0.25), inset 0 0 6px rgba(0,0,0,0.3);
-            padding: 3px; z-index: 5; transition: opacity 0.3s;
+            padding: 3px; z-index: 5; transition: all 0.4s ease;
         }
         .sello-relieve {
             width: 100%; height: 100%; border-radius: 50%;
@@ -326,29 +335,37 @@
             color: var(--env-seal-icon); font-size: 1em;
         }
 
-        /* CONTROL VISUAL DE DECORACIONES TRASERAS SEGÚN EL TEMA ACTIVO */
-        .decoracion-background { position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; z-index: 1; pointer-events: none; }
+        /* DECORACIONES */
+        .decoracion-background { position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; z-index: 0; pointer-events: none; }
         .elemento-deco { position: absolute; fill: none; display: none; }
 
-        /* Comportamiento de hojas */
         body.theme-champagne .rama-izq, body.theme-champagne .rama-der { display: block; width: 40%; height: 40%; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.06)); }
         body.theme-champagne .rama-izq { left: 12%; top: 8%; transform: rotate(-10deg); }
         body.theme-champagne .rama-der { right: 12%; top: 8%; transform: rotate(10deg) scaleX(-1); }
 
-        /* Comportamiento de mariposas (Navy & Rose) */
         body.theme-navy .elemento-deco.mariposa-1, body.theme-rose .elemento-deco.mariposa-1,
         body.theme-navy .elemento-deco.mariposa-2, body.theme-rose .elemento-deco.mariposa-2 { display: block; width: 50px; height: 50px; }
-        
         body.theme-navy .elemento-deco { color: #a4b8c7; }
         body.theme-rose .elemento-deco { color: #e5989b; }
 
         .mariposa-1 { left: 15%; top: 10%; transform: rotate(-25deg); animation: envFloat 4s ease-in-out infinite; }
         .mariposa-2 { right: 12%; top: 5%; transform: rotate(15deg) scale(0.8); animation: envFloat 5s ease-in-out infinite reverse; }
 
-        /* Animaciones mecánicas de apertura */
-        .abriendo .sobre-solapa { transform: rotateX(155deg); filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.03)); }
-        .abriendo .sello-lacre-premium { opacity: 0; transform: translateX(-50%) scale(0.8); }
-        .abriendo .sobre-tarjeta { transform: translateY(-65px); }
+        /* =========================================
+           ESTADOS DE ANIMACIÓN CORREGIDOS
+           ========================================= */
+        .abriendo .sobre-solapa { 
+            transform: rotateX(175deg); /* Se abre hacia atrás casi plana */
+            z-index: 1; /* ¡Magia! Se esconde detrás de la tarjeta blanca */
+            filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.03)); 
+        }
+        .abriendo .sello-lacre-premium { 
+            opacity: 0; /* El sello "se rompe" y desaparece */
+            transform: translateX(-50%) scale(0.5); 
+        }
+        .abriendo .sobre-tarjeta { 
+            transform: translateY(-90px); /* Sale mucho más arriba para total legibilidad */
+        }
         .ocultar-sobre { opacity: 0; visibility: hidden; pointer-events: none; }
 
         @keyframes envPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.9; } }
@@ -407,7 +424,7 @@
 
             <div style="margin-bottom: 40px;">
                 <i class="fas fa-glass-cheers" style="font-size: 2.5em; color: var(--primary-color); margin-bottom: 15px;"></i>
-                <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Fiesta</h2>
+                <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Recepción</h2>
                 <p class="serif-font" style="font-size: 1.5em; margin: 10px 0; font-weight: 600;" id="txt-reception-time">--:--</p>
                 <p style="font-weight: 600; font-size: 0.95em; letter-spacing: 1px; color: var(--primary-color);" id="txt-reception-place">LUGAR</p>
                 <p style="font-size: 0.9em; color: #666; max-width: 300px; margin: 5px auto;" id="txt-reception-addr">Dirección</p>
@@ -500,7 +517,7 @@
                     sobrePantalla.style.opacity = '0';
                     setTimeout(() => { sobrePantalla.classList.add('ocultar-sobre'); }, 800);
                 }
-            }, 1300); 
+            }, 1800); /* Le damos un poco más de tiempo a la animación completa antes de que se desvanezca */
         }
 
         function copiarDatosBancarios(event) {
@@ -514,14 +531,11 @@
         }
 
         document.addEventListener("DOMContentLoaded", () => {
-            // Aplicar el tema configurado
             document.body.className = `theme-${CONFIG.theme}`;
 
-            // Sincronizar textos del sobre y tarjeta
             document.getElementById('sobre-txt-names').innerText = CONFIG.names;
             document.getElementById('sobre-txt-date').innerText = CONFIG.dateStr;
 
-            // Sincronizar textos de la invitación
             document.getElementById('txt-names').innerText = CONFIG.names;
             document.getElementById('txt-date').innerText = CONFIG.dateStr;
             document.getElementById('txt-ceremony-time').innerText = CONFIG.ceremony.time;
@@ -550,7 +564,6 @@
             document.getElementById('lnk-rsvp-form').href = CONFIG.rsvp.googleFormLink;
             document.getElementById('lnk-playlist').href = CONFIG.playlistLink;
 
-            // Cargar imágenes
             document.getElementById('img-main').src = CONFIG.images.main;
             document.getElementById('img-second').src = CONFIG.images.second;
             document.getElementById('img-footer').src = CONFIG.images.footer;
@@ -572,7 +585,6 @@
                 });
             }
 
-            // Reproductor de audio
             const audio = document.getElementById('audio-player');
             const playBtn = document.getElementById('music-btn');
             document.getElementById('txt-music-title').innerText = CONFIG.music.title;
@@ -587,7 +599,6 @@
             };
             playBtn.addEventListener('click', () => toggleMusic(false));
 
-            // Cuenta regresiva
             const targetTime = new Date(CONFIG.dateTarget).getTime();
             setInterval(() => {
                 const now = new Date().getTime();
