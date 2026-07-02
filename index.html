@@ -11,7 +11,7 @@
     
     <style> 
         /* ==========================================================================
-           DEFINICIÓN DE FUENTES (CORRECCIÓN DE FORMATO)
+           DEFINICIÓN DE FUENTES
            ========================================================================== */
         .script-font { font-family: 'Alex Brush', cursive; }
         .serif-font { font-family: 'Playfair Display', serif; }
@@ -19,14 +19,15 @@
         /* ==========================================================================
            SISTEMAS DE TEMAS AVANZADO
            ========================================================================== */
-        :root { /* Valores base */ }
+        :root { 
+            --accent-gold: #d4af37; /* Color de acento premium global */
+        }
 
-        /* Temas (Champagne, Navy, Rose, etc.) */
+        /* Temas (Champagne, Navy, Rose, Boho) */
         body.theme-champagne { --primary-color: #6b705c; --secondary-color: #fcfbf8; --text-dark: #3a3833; --text-light: #ffffff; --env-screen-bg: #f4f3ef; --env-text-color: #4a5343; --env-paper-base: #dfdbd3; --env-paper-solapa: #d6d1c7; --env-paper-espalda: #eae7e1; --env-seal-bg: #556b2f; --env-seal-icon: rgba(255,255,255,0.85); }
         body.theme-navy { --primary-color: #1b263b; --secondary-color: #f0f2f5; --text-dark: #222222; --text-light: #ffffff; --env-screen-bg: #e6ecf2; --env-text-color: #1b263b; --env-paper-base: #415a77; --env-paper-solapa: #34495e; --env-paper-espalda: #5c748d; --env-seal-bg: #b0b7bd; --env-seal-icon: #1b263b; }
         body.theme-rose { --primary-color: #b56576; --secondary-color: #fff0f3; --text-dark: #4a4a4a; --text-light: #ffffff; --env-screen-bg: #faf0f2; --env-text-color: #b56576; --env-paper-base: #e5989b; --env-paper-solapa: #d5888b; --env-paper-espalda: #f2b5b7; --env-seal-bg: #d4af37; --env-seal-icon: #ffffff; }
-        body.theme-boho { --primary-color: #a0522d; --secondary-color: #fdf5e6; --text-dark: #3e2723; --text-light: #ffffff; --env-screen-bg: #f5efe6; --env-text-color: #5d4037; --env-paper-base: #d2b48c; --env-paper-solapa: #bc8f8f; --env-paper-espalda: #eaddca; --env-seal-bg: #a0522d; --env-seal-icon: #ffffff; }
-        /* ... (resto de variables de tema igual) ... */
+        body.theme-boho { --primary-color: #8c5b45; --secondary-color: #fdf5e6; --text-dark: #3e2723; --text-light: #ffffff; --env-screen-bg: #f5efe6; --env-text-color: #5d4037; --env-paper-base: #d2b48c; --env-paper-solapa: #bc8f8f; --env-paper-espalda: #eaddca; --env-seal-bg: #8c5b45; --env-seal-icon: #ffffff; }
 
         /* =========================================
            ESTILOS GENERALES Y LAYOUT
@@ -36,7 +37,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #111;
-            background-image: radial-gradient(circle, #222, #000);
+            background-image: radial-gradient(circle at center, #2a2a2a, #000);
             color: var(--text-dark);
             line-height: 1.6;
             display: flex;
@@ -48,33 +49,180 @@
         .container {
             width: 100%; max-width: 500px;
             background-color: var(--secondary-color);
-            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            box-shadow: 0 0 50px rgba(0,0,0,0.9);
             position: relative; min-height: 100vh;
-            border-radius: 8px; overflow: hidden; 
+            border-radius: 12px; overflow: hidden; 
         }
         
-        /* BLOQUE CORREGIDO: Todo junto, sin código suelto */
+        /* BLOQUE CORREGIDO: Fondos con texturas premium y profundidad */
         .section-dark {
             color: var(--text-light);
-            padding: 60px 25px;
+            padding: 70px 25px;
             text-align: center;
             position: relative;
-            border-radius: 8px;
-            overflow: hidden;
             background-color: var(--primary-color);
-            background-image: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.3) 100%), 
-                              url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23a)' opacity='0.05'/%3E%3C/svg%3E");
-            background-blend-mode: overlay;
+            /* Degradado direccional + Textura de ruido elegante */
+            background-image: 
+                radial-gradient(circle at top right, rgba(255,255,255,0.15) 0%, transparent 60%),
+                radial-gradient(circle at bottom left, rgba(0,0,0,0.3) 0%, transparent 60%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.1), inset 0 -10px 20px rgba(0,0,0,0.1);
         }
 
-        .section-light { background-color: var(--secondary-color); color: var(--text-dark); padding: 60px 25px; text-align: center; }
+        .section-light { 
+            background-color: var(--secondary-color); 
+            background-image: 
+                linear-gradient(135deg, rgba(255,255,255,0.7) 0%, transparent 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseLight'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseLight)' opacity='0.04'/%3E%3C/svg%3E");
+            color: var(--text-dark); 
+            padding: 70px 25px; 
+            text-align: center; 
+        }
         
-        /* Resto de tus estilos (botón, fotos, etc.) permanecen igual */
-        .btn { display: inline-block; border: 1px solid currentColor; padding: 14px 30px; text-decoration: none; color: inherit; font-size: 0.85em; letter-spacing: 2px; margin-top: 25px; transition: all 0.4s ease; cursor: pointer; background: transparent; text-transform: uppercase; font-weight: 600; border-radius: 2px; }
-        .btn:hover { background-color: var(--text-light); color: var(--primary-color); border-color: var(--text-light); transform: translateY(-2px); }
+        /* Separador elegante */
+        .separator {
+            width: 60px; height: 2px;
+            background: var(--accent-gold);
+            margin: 15px auto 25px auto;
+            border-radius: 2px;
+        }
+
+        /* Botones */
+        .btn { display: inline-block; border: 1px solid currentColor; padding: 14px 30px; text-decoration: none; color: inherit; font-size: 0.85em; letter-spacing: 2px; margin-top: 25px; transition: all 0.4s ease; cursor: pointer; background: rgba(255,255,255,0.05); text-transform: uppercase; font-weight: 600; border-radius: 4px; backdrop-filter: blur(4px); }
+        .btn:hover { background-color: var(--text-dark); color: var(--secondary-color); border-color: var(--text-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .section-dark .btn:hover { background-color: var(--text-light); color: var(--primary-color); border-color: var(--text-light); }
         .hidden { display: none !important; }
+
+        /* Contenedores de Fotos */
+        .photo-container {
+            width: 100%; border-radius: 8px; overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            margin-bottom: 25px; min-height: 250px;
+            background: rgba(0,0,0,0.05);
+        }
+        .photo-container img { width: 100%; display: block; object-fit: cover; }
         
-        /* ... (puedes mantener el resto de tus estilos aquí) ... */
+        /* Reproductor de música */
+        .music-box { display: inline-flex; align-items: center; justify-content: center; gap: 10px; background: rgba(0,0,0,0.03); padding: 12px 25px; border-radius: 30px; border: 1px solid rgba(0,0,0,0.05); }
+        .music-box i { font-size: 1.5em; color: var(--primary-color); cursor: pointer; transition: transform 0.3s ease; }
+        .music-box i:hover { transform: scale(1.1); }
+        .music-title { font-size: 0.85em; font-weight: 600; letter-spacing: 1px; color: var(--text-dark); }
+
+        /* =========================================
+           CUENTA REGRESIVA PREMIUM (CORREGIDA)
+           ========================================= */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .countdown-item {
+            background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(0,0,0,0.2));
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 15px 10px;
+            min-width: 75px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            backdrop-filter: blur(8px); /* Efecto Glassmorphism */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .countdown-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--accent-gold);
+            line-height: 1;
+            margin-bottom: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+        .countdown-label {
+            font-size: 0.65em;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            font-weight: 400;
+        }
+
+        /* =========================================
+           ITINERARIO (ESTILOS AGREGADOS)
+           ========================================= */
+        .timeline {
+            position: relative; padding-left: 35px; border-left: 2px solid rgba(0,0,0,0.1);
+            margin: 40px auto 20px auto; text-align: left; max-width: 320px;
+        }
+        .timeline-item { position: relative; margin-bottom: 35px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-icon {
+            position: absolute; left: -53px; top: 0;
+            background: var(--secondary-color); color: var(--primary-color);
+            border-radius: 50%; width: 34px; height: 34px;
+            display: flex; justify-content: center; align-items: center;
+            border: 2px solid var(--primary-color); box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .timeline-time { font-family: 'Playfair Display', serif; font-size: 1.1em; color: var(--primary-color); font-weight: 600; font-style: italic; }
+        .timeline-title { font-size: 0.9em; font-weight: 400; letter-spacing: 1px; color: #555; text-transform: uppercase; margin-top: 3px; }
+
+        /* =========================================
+           VESTIMENTA Y REGALOS (ESTILOS AGREGADOS)
+           ========================================= */
+        .dress-code-box { margin-top: 50px; padding: 40px 20px; background: rgba(0,0,0,0.02); border-radius: 8px; border: 1px dashed rgba(0,0,0,0.1); }
+        .dress-icons { display: flex; justify-content: center; gap: 50px; margin: 25px 0; color: var(--primary-color); }
+        .dress-icons div { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+        
+        .bank-card { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 25px; border-radius: 12px; text-align: left; margin: 25px auto 0 auto; max-width: 350px; backdrop-filter: blur(5px); }
+        .bank-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px dashed rgba(255,255,255,0.2); padding-bottom: 10px; font-size: 0.9em; }
+        .bank-value-container { display: flex; align-items: center; gap: 10px; }
+        .btn-copy-inline { background: var(--accent-gold); color: #fff; border: none; border-radius: 4px; padding: 5px 10px; cursor: pointer; transition: all 0.3s; }
+        .btn-copy-inline:hover { background: #fff; color: var(--primary-color); }
+
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 30px 0; }
+        .photo-grid img { width: 100%; height: 150px; object-fit: cover; border-radius: 6px; }
+
+        /* Animaciones Sobre */
+        #pantalla-sobre {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-color: var(--env-screen-bg); display: flex; justify-content: center; align-items: center;
+            z-index: 10000; perspective: 2000px; transition: opacity 0.8s ease 0.6s, visibility 0.8s ease 0.6s;
+        }
+        .fondo-sobre-patron {
+            width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative;
+            background-color: var(--env-screen-bg);
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23a)' opacity='0.035'/%3E%3C/svg%3E");
+        }
+        .nombres-cabecera-sobre { font-size: 2.2em; color: var(--env-text-color); margin-bottom: 20px; text-shadow: 1px 1px 1px rgba(255,255,255,0.6); opacity: 0.9; }
+        .texto-instruccion-sobre { font-size: 0.7em; text-transform: uppercase; letter-spacing: 3px; color: var(--env-text-color); margin-top: 35px; font-weight: 600; opacity: 0.7; animation: envPulse 2s infinite; }
+        .sobre-wrapper { position: relative; width: 90%; max-width: 380px; height: 260px; filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15)); cursor: pointer; }
+        .textura-papel-real { background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='4'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23b)' opacity='0.05'/%3E%3C/svg%3E"); }
+        .sobre-espalda { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--env-paper-espalda); border-radius: 4px; box-shadow: inset 0 0 15px rgba(0,0,0,0.05); z-index: 1; }
+        .sobre-tarjeta { position: absolute; top: 8%; left: 4%; width: 92%; height: 84%; background-color: #ffffff; border-radius: 2px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; z-index: 2; border: 1px solid rgba(0,0,0,0.02); box-shadow: 0 2px 8px rgba(0,0,0,0.06); transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s; }
+        .sobre-tarjeta span { font-size: 0.65em; letter-spacing: 2px; text-transform: uppercase; color: #888; }
+        .sobre-frente { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--env-paper-base); clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%); z-index: 3; border-radius: 4px; box-shadow: inset 0 10px 20px -10px rgba(0,0,0,0.15); }
+        .sobre-solapa { position: absolute; top: 0; left: 0; width: 100%; height: 55%; z-index: 4; transform-origin: top; transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.3s; filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15)); }
+        .sobre-solapa-forma { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--env-paper-solapa); clip-path: polygon(0 0, 100% 0, 50% 100%); border-top-left-radius: 4px; border-top-right-radius: 4px; }
+        .sello-lacre-premium { position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%); width: 50px; height: 50px; background: var(--env-seal-bg); border-radius: 50%; box-shadow: 0 3px 6px rgba(0,0,0,0.25), inset 0 0 6px rgba(0,0,0,0.3); padding: 3px; z-index: 5; transition: all 0.4s ease; }
+        .sello-relieve { width: 100%; height: 100%; border-radius: 50%; border: 1px dashed rgba(255,255,255,0.2); display: flex; justify-content: center; align-items: center; color: var(--env-seal-icon); font-size: 1em; }
+        .decoracion-background { position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; z-index: 0; pointer-events: none; }
+        .elemento-deco { position: absolute; fill: none; display: none; }
+        body.theme-champagne .rama-izq, body.theme-champagne .rama-der { display: block; width: 40%; height: 40%; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.06)); }
+        body.theme-champagne .rama-izq { left: 12%; top: 8%; transform: rotate(-10deg); }
+        body.theme-champagne .rama-der { right: 12%; top: 8%; transform: rotate(10deg) scaleX(-1); }
+        body.theme-navy .elemento-deco.mariposa-1, body.theme-rose .elemento-deco.mariposa-1, body.theme-navy .elemento-deco.mariposa-2, body.theme-rose .elemento-deco.mariposa-2 { display: block; width: 50px; height: 50px; }
+        body.theme-navy .elemento-deco { color: #a4b8c7; }
+        body.theme-rose .elemento-deco { color: #e5989b; }
+        .mariposa-1 { left: 15%; top: 10%; transform: rotate(-25deg); animation: envFloat 4s ease-in-out infinite; }
+        .mariposa-2 { right: 12%; top: 5%; transform: rotate(15deg) scale(0.8); animation: envFloat 5s ease-in-out infinite reverse; }
+
+        .abriendo .sobre-solapa { transform: rotateX(175deg); z-index: 1; filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.03)); }
+        .abriendo .sello-lacre-premium { opacity: 0; transform: translateX(-50%) scale(0.5); }
+        .abriendo .sobre-tarjeta { transform: translateY(-90px); }
+        .ocultar-sobre { opacity: 0; visibility: hidden; pointer-events: none; }
+
+        @keyframes envPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.9; } }
+        @keyframes envFloat { 0%, 100% { transform: translateY(0) rotate(-25deg); } 50% { transform: translateY(-6px) rotate(-20deg); } }
     </style>
 </head>
 <body>
@@ -84,15 +232,12 @@
          ========================================== -->
     <script>
         const CONFIG = {
-            // ELIGE TU TEMA AQUÍ: "champagne", "navy", o "rose"
             theme: "boho", 
-            
             names: "Fernanda & Gustavo",
             dateStr: "14 . 11 . 2026",
             dateTarget: "Nov 14, 2026 16:30:00", 
-            
-            music: { file: "musica.mp3", title: "Nuestra Canción.mp3" },
-            images: { main: "foto1.jpg", second: "foto2.jpg", footer: "foto3.jpg" },
+            music: { file: "musica.mp3", title: "Nuestra Canción" },
+            images: { main: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc", second: "https://images.unsplash.com/photo-1520854221256-17451cc331bf", footer: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486" },
             ceremony: { time: "16:30 horas", place: "PARROQUIA SAN FRANCISCO", address: "Av. Las Flores 2020, Montevideo", mapLink: "https://maps.google.com" },
             reception: { time: "18:00 horas", place: "QUINTA LOS SUEÑOS", address: "Camino Vecinal Km 4.5, Montevideo", mapLink: "https://maps.google.com" },
             dressCode: { style: "Formal / Elegante", note: "Agradecemos evitar prendas de color blanco, beige o tonos similares." },
@@ -101,25 +246,20 @@
             playlistLink: "https://open.spotify.com", 
             features: {
                 showItinerary: true, showInstagram: true, instagramLink: "https://instagram.com", showPhotoAlbum: true, photoUploadLink: "https://forms.google.com", 
-                albumPhotos: ["foto4.jpg", "foto5.jpg", "foto6.jpg", "foto7.jpg"],
-                showExtraSection1: false, extraSection1Title: "", extraSection1Content: "",
-                showExtraSection2: false, extraSection2Title: "", extraSection2Content: ""
+                albumPhotos: ["https://images.unsplash.com/photo-1606800052052-a08af7148866", "https://images.unsplash.com/photo-1519225421980-715cb0215aed"],
             }
         };
     </script>
 
     <!-- ==========================================
-         SOBRE DIGITAL SIN FALLAS (FIXED)
+         SOBRE DIGITAL
          ========================================== -->
     <div id="pantalla-sobre" onclick="abrirInvitacion()">
         <div class="fondo-sobre-patron">
             <h2 class="script-font nombres-cabecera-sobre" id="sobre-txt-names">Nombres</h2>
             
             <div class="sobre-wrapper">
-                
-                <!-- Decoración Trasera -->
                 <div class="decoracion-background">
-                    <!-- Hojas -->
                     <svg class="elemento-deco rama-izq" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50,90 Q32,55 18,25" stroke="#778a71" stroke-width="1.2" fill="none"/>
                         <path d="M18,25 Q12,20 20,15 Q28,18 18,25" fill="#9cb097" opacity="0.85"/>
@@ -132,7 +272,6 @@
                         <path d="M72,42 Q80,38 75,30 Q67,32 72,42" fill="#a9bfa4" opacity="0.8"/>
                         <path d="M62,62 Q70,58 66,48 Q57,50 62,62" fill="#8b9e86" opacity="0.9"/>
                     </svg>
-                    <!-- Mariposas -->
                     <svg class="elemento-deco mariposa-1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                         <path d="M50,50 Q30,20 25,35 Q20,50 50,55 Q20,65 35,80 Q50,60 50,50 Q70,20 75,35 Q80,50 50,55 Q80,65 65,80 Q50,60 50,50" fill="currentColor" opacity="0.5"/>
                     </svg>
@@ -141,7 +280,6 @@
                     </svg>
                 </div>
 
-                <!-- Capas del Sobre Físico -->
                 <div class="sobre-espalda textura-papel-real"></div>
                 
                 <div class="sobre-tarjeta textura-papel-real">
@@ -151,10 +289,8 @@
                     <i class="fas fa-angle-double-up" style="font-size: 0.8em; opacity: 0.4;"></i>
                 </div>
                 
-                <!-- Frente reconstruido para cubrir laterales -->
                 <div class="sobre-frente textura-papel-real"></div>
                 
-                <!-- Solapa reconstruida para proteger el sello -->
                 <div class="sobre-solapa">
                     <div class="sobre-solapa-forma textura-papel-real"></div>
                     <div class="sello-lacre-premium">
@@ -166,144 +302,6 @@
             <p class="texto-instruccion-sobre">Presioná el sobre para abrirlo</p>
         </div>
     </div>
-
-    <!-- ==========================================
-         ESTILOS CORREGIDOS DEL SOBRE
-         ========================================== -->
-    <style>
-        #pantalla-sobre {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--env-screen-bg);
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000; perspective: 2000px;
-            transition: opacity 0.8s ease 0.6s, visibility 0.8s ease 0.6s;
-        }
-
-        .fondo-sobre-patron {
-            width: 100%; height: 100%; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; position: relative;
-            background-color: var(--env-screen-bg);
-            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.04' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23a)' opacity='0.035'/%3E%3C/svg%3E");
-        }
-
-        .nombres-cabecera-sobre {
-            font-size: 2.2em; color: var(--env-text-color); margin-bottom: 20px;
-            text-shadow: 1px 1px 1px rgba(255,255,255,0.6); opacity: 0.9;
-        }
-
-        .texto-instruccion-sobre {
-            font-size: 0.7em; text-transform: uppercase; letter-spacing: 3px;
-            color: var(--env-text-color); margin-top: 35px; font-weight: 600; opacity: 0.7;
-            animation: envPulse 2s infinite;
-        }
-
-        .sobre-wrapper {
-            position: relative; width: 90%; max-width: 380px; height: 260px;
-            filter: drop-shadow(0 15px 30px rgba(0,0,0,0.15));
-        }
-
-        .textura-papel-real {
-            background-image: url("data:image/svg+xml,%3Csvg width='150' height='150' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='4'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23b)' opacity='0.05'/%3E%3C/svg%3E");
-        }
-
-        /* 1. ESPALDA */
-        .sobre-espalda {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--env-paper-espalda); border-radius: 4px;
-            box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
-            z-index: 1;
-        }
-
-        /* 2. TARJETA */
-        .sobre-tarjeta {
-            position: absolute; top: 8%; left: 4%; width: 92%; height: 84%;
-            background-color: #ffffff; border-radius: 2px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 20px; z-index: 2; border: 1px solid rgba(0,0,0,0.02);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            /* Demora de 0.3s para darle tiempo a la solapa de abrirse antes de subir */
-            transition: transform 1s cubic-bezier(0.25, 1, 0.5, 1) 0.3s;
-        }
-        .sobre-tarjeta span { font-size: 0.65em; letter-spacing: 2px; text-transform: uppercase; color: #888; }
-
-        /* 3. FRENTE (Corregido para tapar 100% de los bordes laterales) */
-        .sobre-frente {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--env-paper-base);
-            /* Este polígono dibuja las aletas laterales y la de abajo en una sola pieza continua */
-            clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
-            z-index: 3; border-radius: 4px;
-            box-shadow: inset 0 10px 20px -10px rgba(0,0,0,0.15);
-        }
-
-        /* 4. SOLAPA CONTENEDORA (Ya no corta al sello) */
-        .sobre-solapa {
-            position: absolute; top: 0; left: 0; width: 100%; height: 55%;
-            z-index: 4; transform-origin: top;
-            /* La solapa reacciona inmediato, el z-index demora 0.3s para meterse tras la tarjeta justo a tiempo */
-            transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), z-index 0s 0.3s;
-            filter: drop-shadow(0 5px 8px rgba(0,0,0,0.15));
-        }
-
-        /* 5. FORMA DE LA SOLAPA (El triángulo físico) */
-        .sobre-solapa-forma {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--env-paper-solapa);
-            clip-path: polygon(0 0, 100% 0, 50% 100%);
-            border-top-left-radius: 4px; border-top-right-radius: 4px;
-        }
-
-        /* 6. SELLO REDONDO INTACTO */
-        .sello-lacre-premium {
-            position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
-            width: 50px; height: 50px;
-            background: var(--env-seal-bg); border-radius: 50%;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.25), inset 0 0 6px rgba(0,0,0,0.3);
-            padding: 3px; z-index: 5; transition: all 0.4s ease;
-        }
-        .sello-relieve {
-            width: 100%; height: 100%; border-radius: 50%;
-            border: 1px dashed rgba(255,255,255,0.2);
-            display: flex; justify-content: center; align-items: center;
-            color: var(--env-seal-icon); font-size: 1em;
-        }
-
-        /* DECORACIONES */
-        .decoracion-background { position: absolute; width: 140%; height: 140%; top: -20%; left: -20%; z-index: 0; pointer-events: none; }
-        .elemento-deco { position: absolute; fill: none; display: none; }
-
-        body.theme-champagne .rama-izq, body.theme-champagne .rama-der { display: block; width: 40%; height: 40%; filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.06)); }
-        body.theme-champagne .rama-izq { left: 12%; top: 8%; transform: rotate(-10deg); }
-        body.theme-champagne .rama-der { right: 12%; top: 8%; transform: rotate(10deg) scaleX(-1); }
-
-        body.theme-navy .elemento-deco.mariposa-1, body.theme-rose .elemento-deco.mariposa-1,
-        body.theme-navy .elemento-deco.mariposa-2, body.theme-rose .elemento-deco.mariposa-2 { display: block; width: 50px; height: 50px; }
-        body.theme-navy .elemento-deco { color: #a4b8c7; }
-        body.theme-rose .elemento-deco { color: #e5989b; }
-
-        .mariposa-1 { left: 15%; top: 10%; transform: rotate(-25deg); animation: envFloat 4s ease-in-out infinite; }
-        .mariposa-2 { right: 12%; top: 5%; transform: rotate(15deg) scale(0.8); animation: envFloat 5s ease-in-out infinite reverse; }
-
-        /* =========================================
-           ESTADOS DE ANIMACIÓN CORREGIDOS
-           ========================================= */
-        .abriendo .sobre-solapa { 
-            transform: rotateX(175deg); /* Se abre hacia atrás casi plana */
-            z-index: 1; /* ¡Magia! Se esconde detrás de la tarjeta blanca */
-            filter: drop-shadow(0 -5px 5px rgba(0,0,0,0.03)); 
-        }
-        .abriendo .sello-lacre-premium { 
-            opacity: 0; /* El sello "se rompe" y desaparece */
-            transform: translateX(-50%) scale(0.5); 
-        }
-        .abriendo .sobre-tarjeta { 
-            transform: translateY(-90px); /* Sale mucho más arriba para total legibilidad */
-        }
-        .ocultar-sobre { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        @keyframes envPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 0.9; } }
-        @keyframes envFloat { 0%, 100% { transform: translateY(0) rotate(-25deg); } 50% { transform: translateY(-6px) rotate(-20deg); } }
-    </style>
 
     <!-- ==========================================
          CUERPO PRINCIPAL DE LA INVITACIÓN
@@ -330,12 +328,12 @@
         </div>
 
         <div class="section-dark">
-            <p class="serif-font" style="font-size: 1.4em; font-style: italic; opacity: 0.9;">¡Acompáñanos!</p>
+            <p class="serif-font" style="font-size: 1.6em; font-style: italic; opacity: 0.9;">¡Acompáñanos!</p>
             <p style="font-size: 0.9em; max-width: 380px; margin: 15px auto 0 auto; font-weight: 300; letter-spacing: 0.5px;">
                 Tenemos el gran honor de invitarte a celebrar este momento tan especial.
             </p>
             <div style="margin-top: 45px;">
-                <h3 style="font-size: 0.8em; letter-spacing: 4px; font-weight: 600; opacity: 0.8; margin-bottom: 15px;">TIEMPO RESTANTE</h3>
+                <h3 style="font-size: 0.8em; letter-spacing: 4px; font-weight: 600; opacity: 0.8; margin-bottom: 5px;">TIEMPO RESTANTE</h3>
                 <div class="countdown">
                     <div class="countdown-item"><span class="countdown-number" id="cd-days">00</span><span class="countdown-label">Días</span></div>
                     <div class="countdown-item"><span class="countdown-number" id="cd-hours">00</span><span class="countdown-label">Horas</span></div>
@@ -374,14 +372,14 @@
                 </div>
             </div>
 
-            <div class="photo-container"><img id="img-second" src="" alt="Segunda Foto"></div>
+            <div class="photo-container" style="margin-top: 40px;"><img id="img-second" src="" alt="Segunda Foto"></div>
 
             <div class="dress-code-box">
                 <h2 class="script-font" style="font-size: 3em; line-height: 1;">Código de Vestimenta</h2>
                 <p class="serif-font" style="font-size: 1.3em; margin-top: 10px; color: var(--primary-color);" id="txt-dress-style">Estilo</p>
                 <div class="dress-icons">
-                    <div style="font-size: 0.4em;"><i class="fas fa-user-tie" style="font-size: 2.5rem; display:block;"></i><span style="font-family:'Montserrat'; font-weight:600; font-size:11px; letter-spacing:1px;">ELLOS</span></div>
-                    <div style="font-size: 0.4em;"><i class="fas fa-female" style="font-size: 2.5rem; display:block;"></i><span style="font-family:'Montserrat'; font-weight:600; font-size:11px; letter-spacing:1px;">ELLAS</span></div>
+                    <div><i class="fas fa-user-tie" style="font-size: 2.5rem;"></i><span style="font-weight:600; font-size:11px; letter-spacing:1px;">ELLOS</span></div>
+                    <div><i class="fas fa-female" style="font-size: 2.5rem;"></i><span style="font-weight:600; font-size:11px; letter-spacing:1px;">ELLAS</span></div>
                 </div>
                 <p style="font-size: 0.85em; color: #555; padding: 0 10px; font-style: italic;" id="txt-dress-note">Nota de vestimenta</p>
             </div>
@@ -392,43 +390,43 @@
             <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Regalos</h2>
             <p style="font-size: 0.9em; padding: 0 15px; margin: 20px 0 30px 0; font-weight: 300;" id="txt-gifts-text">Mensaje</p>
             
-            <div id="qr-container" style="background: #ffffff; display: inline-block; padding: 15px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
+            <div id="qr-container" class="hidden" style="background: #ffffff; display: inline-block; padding: 15px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); margin-bottom: 15px;">
                 <img id="img-gifts-qr" src="" alt="QR" style="width: 150px; height: 150px; display: block;">
             </div>
 
             <div class="bank-card">
                 <div class="bank-row"><strong>Banco</strong><div class="bank-value" id="txt-bank-name">BROU</div></div>
                 <div class="bank-row"><strong>Titular</strong><div class="bank-value" id="txt-bank-titular">Nombre</div></div>
-                <div class="bank-row" style="margin-bottom: 0;">
+                <div class="bank-row" style="margin-bottom: 0; border: none;">
                     <strong>Número de Cuenta</strong>
                     <div class="bank-value-container">
-                        <div class="bank-value" id="txt-bank-account" style="font-weight: 600; color: var(--primary-color);">000000</div>
+                        <div class="bank-value" id="txt-bank-account" style="font-weight: 600; color: var(--accent-gold);">000000</div>
                         <button class="btn-copy-inline" onclick="copiarDatosBancarios(event)"><i class="far fa-copy" id="icon-copy"></i></button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="section-dark">
-            <i class="fas fa-envelope-open-text" style="font-size: 2.5em; margin-bottom: 15px;"></i>
+        <div class="section-dark" style="background-image: none; background-color: rgba(0,0,0,0.2);">
+            <i class="fas fa-envelope-open-text" style="font-size: 2.5em; margin-bottom: 15px; color: var(--accent-gold);"></i>
             <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Confirmación</h2>
-            <p style="font-size: 0.95em; margin: 20px 0;">Por favor, confirma tu asistencia antes del:<br><span id="txt-rsvp-deadline" style="font-weight: 600; font-size: 1.1em; display: inline-block; margin-top: 5px;">Fecha</span></p>
-            <a href="#" class="btn" id="lnk-rsvp-form" target="_blank" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.5);">Confirmar aquí</a>
+            <p style="font-size: 0.95em; margin: 20px 0;">Por favor, confirma tu asistencia antes del:<br><span id="txt-rsvp-deadline" style="font-weight: 600; font-size: 1.1em; display: inline-block; margin-top: 5px; color: var(--accent-gold);">Fecha</span></p>
+            <a href="#" class="btn" id="lnk-rsvp-form" target="_blank" style="border-color: var(--accent-gold); color: var(--accent-gold);">Confirmar aquí</a>
         </div>
 
         <div class="section-light">
             <div style="display: flex; flex-direction: column; gap: 15px; align-items: center; margin: 20px 0;">
-                <a href="#" id="lnk-playlist" class="btn" target="_blank" style="margin-top:0; width:85%; max-width:300px;"><i class="fab fa-spotify" style="color: #1DB954; margin-right: 8px;"></i> Playlist del Evento</a>
-                <a href="#" id="sec-instagram" class="btn hidden" target="_blank" style="margin-top:0; width:85%; max-width:300px;"><i class="fab fa-instagram" style="color: #E1306C; margin-right: 8px;"></i> Compartir en Instagram</a>
+                <a href="#" id="lnk-playlist" class="btn" target="_blank" style="margin-top:0; width:85%; max-width:300px; color: var(--text-dark); border-color: rgba(0,0,0,0.2);"><i class="fab fa-spotify" style="color: #1DB954; margin-right: 8px;"></i> Playlist del Evento</a>
+                <a href="#" id="sec-instagram" class="btn hidden" target="_blank" style="margin-top:0; width:85%; max-width:300px; color: var(--text-dark); border-color: rgba(0,0,0,0.2);"><i class="fab fa-instagram" style="color: #E1306C; margin-right: 8px;"></i> Compartir en Instagram</a>
             </div>
 
             <div id="sec-photo-album" class="hidden" style="margin-top: 60px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 45px;">
                 <h2 class="script-font" style="font-size: 3.2em; line-height: 1;">Galería de Fotos</h2>
                 <div class="photo-grid" id="grid-photos-container"></div>
-                <a href="#" id="lnk-photo-upload" class="btn" target="_blank"><i class="fas fa-camera" style="margin-right: 8px;"></i> Subir Fotos</a>
+                <a href="#" id="lnk-photo-upload" class="btn" target="_blank" style="border-color: var(--primary-color); color: var(--primary-color);"><i class="fas fa-camera" style="margin-right: 8px;"></i> Subir Fotos</a>
             </div>
 
-            <h2 class="script-font" style="font-size: 4em; margin: 40px 0 45px 0; line-height: 1;">¡Te esperamos!</h2>
+            <h2 class="script-font" style="font-size: 4em; margin: 60px 0 30px 0; line-height: 1;">¡Te esperamos!</h2>
             <div class="photo-container" style="margin-bottom: -20px; padding: 0;"><img id="img-footer" src="" alt="Cierre"></div>
         </div>
     </div>
@@ -450,7 +448,7 @@
                     sobrePantalla.style.opacity = '0';
                     setTimeout(() => { sobrePantalla.classList.add('ocultar-sobre'); }, 800);
                 }
-            }, 1800); /* Le damos un poco más de tiempo a la animación completa antes de que se desvanezca */
+            }, 1800); 
         }
 
         function copiarDatosBancarios(event) {
@@ -486,8 +484,6 @@
             if (CONFIG.gifts.showQR) {
                 document.getElementById('qr-container').classList.remove('hidden');
                 document.getElementById('img-gifts-qr').src = CONFIG.gifts.qrImage;
-            } else {
-                document.getElementById('qr-container').classList.add('hidden');
             }
 
             document.getElementById('txt-bank-name').innerText = CONFIG.gifts.bankName;
