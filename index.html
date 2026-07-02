@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Invitación de Boda</title>
+    <!-- Fuentes elegantes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* =========================================
+           PALETAS DE COLORES (Variables CSS)
+           ========================================= */
+        :root {
+            /* Tema por defecto: Olive (Verde Olivo elegante) */
+            --primary-color: #6b705c;
+            --secondary-color: #f3f4ed;
+            --text-dark: #333333;
+            --text-light: #ffffff;
+            --accent-color: #a5a58d;
+            --card-bg: #ffffff;
+        }
+
+        body.theme-navy {
+            --primary-color: #1b263b;
+            --secondary-color: #f0f2f5;
+            --text-dark: #222222;
+            --text-light: #ffffff;
+            --accent-color: #415a77;
+            --card-bg: #ffffff;
+        }
+
+        body.theme-rose {
+            --primary-color: #b56576;
+            --secondary-color: #fff0f3;
+            --text-dark: #4a4a4a;
+            --text-light: #ffffff;
+            --accent-color: #e5989b;
+            --card-bg: #ffffff;
+        }
+
+        body.theme-terracotta {
+            --primary-color: #bc4749;
+            --secondary-color: #f2e8cf;
+            --text-dark: #386641;
+            --text-light: #ffffff;
+            --accent-color: #a7c957;
+            --card-bg: #ffffff;
+        }
+
+        /* =========================================
+           ESTILOS GENERALES (Mobile-First / Max 500px)
+           ========================================= */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #1a1a1a;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background-color: var(--secondary-color);
+            box-shadow: 0 0 30px rgba(0,0,0,0.7);
+            overflow-y: auto;
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        /* Tipografías Especiales */
+        .script-font { font-family: 'Alex Brush', cursive; }
+        .serif-font { font-family: 'Playfair Display', serif; }
+        
+        h1, h2, h3 { text-align: center; font-weight: normal; }
+        
+        /* Bloques de sección */
+        .section-dark {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 50px 25px;
+            text-align: center;
+        }
+        
+        .section-light {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 50px 25px;
+            text-align: center;
+        }
+        
+        /* Botones Elegantes */
+        .btn {
+            display: inline-block;
+            border: 1px solid currentColor;
+            padding: 12px 28px;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.85em;
+            letter-spacing: 2px;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+        
+        .btn:hover {
+            background-color: var(--text-light);
+            color: var(--primary-color);
+            border-color: var(--text-light);
+        }
+        
+        .section-light .btn:hover {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            border-color: var(--primary-color);
+        }
+
+        /* Contenedores de Imágenes */
+        .photo-container {
+            margin: 25px 0;
+            padding: 0 10px;
+        }
+        .photo-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Reproductor de Música floating/sticky o integrado */
+        .music-box {
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .music-box i {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .music-box i:hover { transform: scale(1.1); }
+        .music-title { font-size: 0.8em; font-weight: 600; letter-spacing: 1px; }
+
+        /* Cuenta Regresiva */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 15px;
+            border-radius: 4px;
+            min-width: 70px;
+        }
+        .section-light .countdown-item {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        .countdown-number {
+            font-size: 1.8em;
+            font-family: 'Playfair Display', serif;
+            font-weight: bold;
+        }
+        .countdown-label {
+            font-size: 0.65em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* Línea de Tiempo (Itinerario) */
+        .timeline {
+            position: relative;
+            max-width: 320px;
+            margin: 40px auto;
+            padding-left: 20px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background-color: var(--primary-color);
+            opacity: 0.5;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 40px;
+            text-align: left;
+        }
+        .timeline-icon {
+            position: absolute;
+            left: 17px;
+            top: 3px;
+            width: 26px;
+            height: 26px;
+            background: var(--secondary-color);
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75em;
+            color: var(--primary-color);
+            z-index: 2;
+        }
+        .timeline-time { font-weight: 600; font-size: 0.9em; color: var(--primary-color); }
+        .timeline-title { font-family: 'Playfair Display', serif; font-size: 1.1em; margin: 2px 0; }
+
+        /* Código de Vestimenta */
+        .dress-code-box {
+            background: var(--card-bg);
+            padding: 30px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin: 25px 0;
+        }
+        .dress-icons {
+            font-size: 2.5em;
+            margin: 15px 0;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        /* Álbum de Fotos de la Galería */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 25px 0;
+        }
+        .photo-grid img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Clases de Utilidad */
+        .hidden { display: none !important; }
+        .separator {
+            width: 60px;
+            height: 1px;
+            background-color: currentColor;
+            margin: 20px auto;
+            opacity: 0.5;
+        }
+
+        /* =========================================
+           NUEVOS ESTILOS: SOBRE REALISTA (REPLICA FOTO)
+           ========================================= */
+        #pantalla-sobre {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111111;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .sobre-sobre {
+            width: 100%;
+            max-width: 500px;
+            height: 100vh;
+            background-color: var(--secondary-color);
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 0 40px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Solapa triangular superior exacta a la imagen FB_IMG_1783000003251_2.jpg */
+        .sobre-solapa {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background-color: var(--primary-color);
+            clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 50px;
+            z-index: 3;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .sobre-solapa h1 {
+            color: var(--text-light);
+            font-size: 3.2em;
+            margin-bottom: 2px;
+            line-height: 1.1;
+        }
+
+        .sobre-solapa .separador-sobre {
+            width: 50px;
+            height: 1px;
+            background-color: var(--text-light);
+            opacity: 0.5;
+            margin: 10px 0;
+        }
+
+        .sobre-solapa p {
+            color: var(--text-light);
+            font-size: 0.9em;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* Tarjeta interna interactiva */
+        .sobre-tarjeta-interna {
+            background: var(--card-bg);
+            width: 82%;
+            padding: 35px 20px;
+            border-radius: 4px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            z-index: 2;
+            transform: translateY(60px);
+            transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .sobre-tarjeta-interna span {
+            display: block;
+            font-size: 0.75em;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            opacity: 0.8;
+        }
+
+        .sobre-tarjeta-interna i {
+            font-size: 2.2em;
+            color: var(--primary-color);
+            animation: pulseHeart 1.6s infinite ease-in-out;
+        }
+
+        @keyframes pulseHeart {
+            0% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.12); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.8; }
+        }
+
+        /* Efectos de apertura */
+        .abriendo .sobre-solapa {
+            transform: translateY(-105%);
+        }
+
+        .abriendo .sobre-tarjeta-interna {
+            transform: translateY(-20px);
+        }
+
+        .ocultar-sobre {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* =========================================
+           NUEVOS ESTILOS: COPIA DE DATOS BANCARIOS
+           ========================================= */
+        .bank-card {
+            background: var(--card-bg);
+            color: var(--text-dark);
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .bank-row {
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+
+        .bank-row strong {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: block;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .bank-value-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2px;
+        }
+
+        .bank-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.05em;
+            word-break: break-all;
+        }
+
+        .btn-copy-inline {
+            background: transparent;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 5px 10px;
+            transition: transform 0.2s;
+        }
+
+        .btn-copy-inline:active {
+            transform: scale(0.85);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         APARTADO CONFIG: FÁCILMENTE EDITABLE
+         ========================================== -->
+    <script>
+        const CONFIG = {
+            // PALETAS DISPONIBLES: "olive", "navy", "rose", "terracotta"
+            theme: "olive",
+            
+            // TEXTOS Y FECHAS PRINCIPALES
+            names: "Fernanda & Gustavo",
+            dateStr: "14 . 11 . 2026",
+            dateTarget: "Nov 14, 2026 16:30:00", // Para la cuenta regresiva real
+            
+            // CONFIGURACIÓN DE AUDIO / MÚSICA (Suelto en la raíz)
+            music: {
+                file: "musica.mp3", 
+                title: "Nuestra Canción.mp3"
+            },
+            
+            // ENLACES A IMÁGENES (Sueltas en la raíz de tu repositorio de GitHub)
+            images: {
+                main: "foto1.jpg", 
+                second: "foto2.jpg",
+                footer: "foto3.jpg"
+            },
+
+            // DETALLES DE LOGÍSTICA
+            ceremony: {
+                time: "16:30 PM",
+                place: "PARROQUIA SAN FRANCISCO",
+                address: "Av. Principal #123, Ciudad de la Boda",
+                mapLink: "https://maps.google.com"
+            },
+            reception: {
+                time: "18:00 PM",
+                place: "QUINTA LOS SUEÑOS",
+                address: "Camino Vecinal Km 4.5, Zona de Eventos",
+                mapLink: "https://maps.google.com"
+            },
+
+            // CÓDIGO DE VESTIMENTA (DRESS CODE)
+            dressCode: {
+                style: "Formal / Elegante",
+                note: "Agradecemos evitar prendas de color blanco, beige o tonos similares."
+            },
+
+            // DATOS DE REGALOS / COLECTA Y CUENTA BANCARIA
+            gifts: {
+                text: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, te dejamos nuestro código QR o puedes realizar una transferencia bancaria utilizando el botón para copiar los datos:",
+                qrImage: "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=CuentaBancariaBoda",
+                
+                // Datos de tu cuenta bancaria
+                bankName: "Banco Ejemplo S.A.",
+                titular: "Fernanda y Gustavo",
+                accountNumber: "1234 5678 9012 3456 78"
+            },
+
+            // FORMULARIO DE CONFIRMACIÓN (GOOGLE FORM)
+            rsvp: {
+                deadline: "01 de Noviembre de 2026",
+                googleFormLink: "https://forms.google.com" 
+            },
+
+            // PLATAFORMAS EXTRA
+            playlistLink: "https://open.spotify.com", 
+
+            // MÓDULOS ACTIVABLES O DESACTIVABLES (true = Mostrar, false = Ocultar)
+            features: {
+                showItinerary: true, // Permite activar o desactivar la sección del itinerario por completo
+                showInstagram: true,
+                instagramLink: "https://instagram.com", 
+                
+                showPhotoAlbum: true,
+                albumDownloadLink: "https://drive.google.com", 
+                albumPhotos: [
+                    "foto4.jpg",
+                    "foto5.jpg",
+                    "foto6.jpg",
+                    "foto7.jpg"
+                ],
+
+                // Secciones vacías adicionales que puedes activar/desactivar y rellenar después
+                showExtraSection1: false, 
+                extraSection1Title: "Hoteles Recomendados",
+                extraSection1Content: "1. Hotel Central (Tel: 123456)<br>2. Hostal El Alba (Tel: 789012). Mencionen la boda para descuento.",
+
+                showExtraSection2: false,
+                extraSection2Title: "Información de Traslados",
+                extraSection2Content: "Habrá un autobús privado saliendo de la plaza principal hacia la Quinta a las 17:45 PM."
+            }
+        };
+    </script>
+
+    <!-- ==========================================
+         EL SOBRE DE INICIO (PANTALLA COMPLETA - RÉPLICA DE LA FOTO)
+         ========================================== -->
+    <div id="pantalla-sobre" onclick="abrirInvitacion()">
+        <div class="sobre-sobre">
+            <!-- Solapa V superior idéntica a la imagen -->
+            <div class="sobre-solapa">
+                <h1 class="script-font" id="sobre-txt-names">Nombres</h1>
+                <div class="separador-sobre"></div>
+                <p id="sobre-txt-date">00 . 00 . 0000</p>
+            </div>
+            
+            <!-- Cuerpo de tarjeta emergente inferior -->
+            <div class="sobre-tarjeta-interna">
+                <span>Toca para abrir</span>
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         ESTRUCTURA DE LA INVITACIÓN
+         ========================================== -->
+    <div class="container">
+        
+        <!-- SECCIÓN 1: CABECERA / BIENVENIDA -->
+        <div class="section-dark">
+            <h1 class="script-font" style="font-size: 3.6em; margin-bottom: 5px; line-height: 1.2;" id="txt-names">Nombres</h1>
+            <div class="separator"></div>
+            <p style="font-size: 1em; letter-spacing: 4px; font-weight: 300;" id="txt-date">00 . 00 . 0000</p>
+        </div>
+
+        <!-- SECCIÓN 2: PORTADA, AUDIO Y POEMA -->
+        <div class="section-light">
+            <div class="photo-container">
+                <img id="img-main" src="" alt="Nuestra Foto">
+            </div>
+            
+            <p style="font-size: 0.9em; font-style: italic; color: #555; padding: 10px 15px; max-width: 400px; margin: 0 auto;">
+                "De nadie seré, solo de ti. Hasta que mis huesos se vuelvan cenizas y mi corazón deje de latir."
+            </p>
+
+            <!-- Botón de música e intento de autoplay -->
+            <div style="margin-top: 30px;">
+                <div class="music-box">
+                    <i class="fas fa-play-circle" id="music-btn"></i>
+                    <span class="music-title" id="txt-music-title">Cargando música...</span>
+                </div>
+                <audio id="audio-player" loop></audio>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: CUENTA REGRESIVA -->
+        <div class="section-dark">
+            <p class="serif-font" style="font-size: 1.2em; font-style: italic; opacity: 0.9;">¡Nos casamos!</p>
+            <p style="font-size: 0.85em; max-width: 380px; margin: 15px auto 0 auto; font-weight: 300; letter-spacing: 0.5px;">
+                Con la bendición de Dios y nuestros padres, tenemos el gran honor de invitarles a celebrar nuestra unión religiosa.
+            </p>
+            
+            <div style="margin-top: 40px;">
+                <h3 style="font-size: 0.8em; letter-spacing: 3px; font-weight: 600; opacity: 0.8;">TIEMPO RESTANTE</h3>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-days">00</span>
+                        <span class="countdown-label">Días</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-hours">00</span>
+                        <span class="countdown-label">Horas</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-mins">00</span>
+                        <span class="countdown-label">Min</span>
+                    </div>
+                    <div class="countdown-item">
+                        <span class="countdown-number" id="cd-secs">00</span>
+                        <span class="countdown-label">Seg</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 4: LOGÍSTICA (DÓNDE Y CUÁNDO) + ITINERARIO -->
+        <div class="section-light">
+            <!-- Ceremonia -->
+            <div style="margin-bottom: 50px;">
+                <i class="fas fa-church" style="font-size: 2em; color: var(--primary-color); margin-bottom: 10px;"></i>
+                <h2 class="script-font" style="font-size: 2.8em; line-height: 1;">Ceremonia Religiosa</h2>
+                <p class="serif-font" style="font-size: 1.4em; margin: 8px 0; font-weight: 600;" id="txt-ceremony-time">16:30 PM</p>
+                <p style="font-weight: 600; font-size: 0.9em; letter-spacing: 1px;" id="txt-ceremony-place">LUGAR</p>
+                <p style="font-size: 0.85em; color: #666; max-width: 300px; margin: 5px auto;" id="txt-ceremony-addr">Dirección de prueba</p>
+                <a href="#" class="btn" id="lnk-ceremony-map" target="_blank">Ver Mapa</a>
+            </div>
+
+            <!-- Recepción -->
+            <div style="margin-bottom: 30px;">
+                <i class="fas fa-glass-cheers" style="font-size: 2em; color: var(--primary-color); margin-bottom: 10px;"></i>
+                <h2 class="script-font" style="font-size: 2.8em; line-height: 1;">Recepción</h2>
+                <p class="serif-font" style="font-size: 1.4em; margin: 8px 0; font-weight: 600;" id="txt-reception-time">18:00 PM</p>
+                <p style="font-weight: 600; font-size: 0.9em; letter-spacing: 1px;" id="txt-reception-place">LUGAR</p>
+                <p style="font-size: 0.85em; color: #666; max-width: 300px; margin: 5px auto;" id="txt-reception-addr">Dirección de prueba</p>
+                <a href="#" class="btn" id="lnk-reception-map" target="_blank">Ver Mapa</a>
+            </div>
+
+            <!-- Itinerario Dinámico Lineal (Activable/Desactivable desde CONFIG) -->
+            <div id="sec-itinerary">
+                <h2 class="script-font" style="font-size: 2.8em; margin-top: 50px; line-height: 1;">Itinerario</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-church"></i></div>
+                        <span class="timeline-time">16:30 PM</span>
+                        <h4 class="timeline-title">Llegada a la Iglesia</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-camera"></i></div>
+                        <span class="timeline-time">17:30 PM</span>
+                        <h4 class="timeline-title">Sesión Fotográfica</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-cocktail"></i></div>
+                        <span class="timeline-time">18:15 PM</span>
+                        <h4 class="timeline-title">Cóctel de Bienvenida</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-utensils"></i></div>
+                        <span class="timeline-time">19:30 PM</span>
+                        <h4 class="timeline-title">Cena de Gala</h4>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon"><i class="fas fa-music"></i></div>
+                        <span class="timeline-time">21:00 PM</span>
+                        <h4 class="timeline-title">Apertura de la Pista</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="photo-container">
+                <img id="img-second" src="" alt="Segunda Foto">
+            </div>
+
+            <!-- Código de Vestimenta -->
+            <div class="dress-code-box">
+                <h2 class="script-font" style="font-size: 2.6em; line-height: 1;">Código de Vestimenta</h2>
+                <p class="serif-font" style="font-size: 1.2em; margin-top: 5px;" id="txt-dress-style">Estilo</p>
+                <div class="dress-icons">
+                    <div style="font-size: 0.4em;"><i class="fas fa-user-tie" style="font-size: 2.5rem; display:block;"></i><span style="font-family:'Montserrat'; font-weight:600; font-size:11px; letter-spacing:1px;">ELLOS</span></div>
+                    <div style="font-size: 0.4em;"><i class="fas fa-female" style="font-size: 2.5rem; display:block;"></i><span style="font-family:'Montserrat'; font-weight:600; font-size:11px; letter-spacing:1px;">ELLAS</span></div>
+                </div>
+                <p style="font-size: 0.8em; color: #555; padding: 0 10px; font-style: italic;" id="txt-dress-note">Nota de vestimenta</p>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 5: REGALOS (CON INFORMACIÓN BANCARIA COPIABLE) -->
+        <div class="section-dark">
+            <i class="fas fa-gift" style="font-size: 2em; margin-bottom: 10px;"></i>
+            <h2 class="script-font" style="font-size: 2.8em; line-height: 1;">Mesa de Regalos</h2>
+            <p style="font-size: 0.85em; padding: 0 15px; margin: 15px 0 25px 0; font-weight: 300;" id="txt-gifts-text">Mensaje de mesa de regalos</p>
+            
+            <div style="background: #ffffff; display: inline-block; padding: 15px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); margin-bottom: 10px;">
+                <img id="img-gifts-qr" src="" alt="Código QR Colecta" style="width: 140px; height: 140px; display: block;">
+            </div>
+
+            <!-- Tarjeta Interactiva con Datos Bancarios Copiables -->
+            <div class="bank-card">
+                <div class="bank-row">
+                    <strong>Banco</strong>
+                    <div class="bank-value" id="txt-bank-name">Cargando...</div>
+                </div>
+                <div class="bank-row">
+                    <strong>Titular</strong>
+                    <div class="bank-value" id="txt-bank-titular">Cargando...</div>
+                </div>
+                <div class="bank-row" style="margin-bottom: 0;">
+                    <strong>CLABE / Cuenta</strong>
+                    <div class="bank-value-container">
+                        <div class="bank-value" id="txt-bank-account" style="font-weight: 600; letter-spacing: 0.5px;">000000000000000000</div>
+                        <button class="btn-copy-inline" onclick="copiarDatosBancarios(event)" title="Copiar número de cuenta">
+                            <i class="far fa-copy" id="icon-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIONES VACÍAS ADICIONALES (ACTIVABLES DESDE CONFIG) -->
+        <div id="extra-sec-1" class="section-light hidden">
+            <h2 class="script-font" style="font-size: 2.6em;" id="txt-extra1-title">Sección Extra 1</h2>
+            <p style="font-size: 0.85em; margin-top: 15px;" id="txt-extra1-content">Contenido...</p>
+        </div>
+        
+        <div id="extra-sec-2" class="section-light hidden" style="border-top: 1px solid rgba(0,0,0,0.05);">
+            <h2 class="script-font" style="font-size: 2.6em;" id="txt-extra2-title">Sección Extra 2</h2>
+            <p style="font-size: 0.85em; margin-top: 15px;" id="txt-extra2-content">Contenido...</p>
+        </div>
+
+        <!-- SECCIÓN 6: RSVP / CONFIRMACIÓN DE ASISTENCIA -->
+        <div class="section-dark">
+            <i class="fas fa-envelope-open-text" style="font-size: 2em; margin-bottom: 10px;"></i>
+            <h2 class="script-font" style="font-size: 2.8em; line-height: 1;">Confirmación de Asistencia</h2>
+            <p style="font-size: 0.9em; margin: 15px 0;">Por favor, confirma tu asistencia antes del:<br><span id="txt-rsvp-deadline" style="font-weight: 600;">Fecha Límite</span></p>
+            <a href="#" class="btn" id="lnk-rsvp-form" target="_blank" style="background: rgba(255,255,255,0.1);">Confirmar aquí</a>
+        </div>
+
+        <!-- SECCIÓN 7: RECOMENDACIONES, PLAYLIST Y ÁLBUM FOTOS -->
+        <div class="section-light">
+            <div style="margin-bottom: 35px;">
+                <h3 style="letter-spacing: 2px; font-size: 0.85em; font-weight: 600; margin-bottom: 5px;">RECOMENDACIONES</h3>
+                <p style="font-size: 0.8em; color: #555;">Rogamos puntualidad al evento.<br>Seguir las indicaciones del personal organizador.</p>
+            </div>
+            
+            <div style="margin-bottom: 40px;">
+                <h3 style="letter-spacing: 2px; font-size: 0.85em; font-weight: 600; margin-bottom: 5px;">ADULT RECEPTION (SIN NIÑOS)</h3>
+                <p style="font-size: 0.8em; color: #555; padding: 0 15px;">Hemos optado por una celebración exclusiva para adultos. Agradecemos su comprensión y esperamos que disfruten de esta noche de fiesta libre de preocupaciones.</p>
+            </div>
+
+            <!-- Playlist y Filtro Instagram -->
+            <div style="display: flex; flex-direction: column; gap: 12px; align-items: center; margin: 30px 0;">
+                <a href="#" id="lnk-playlist" class="btn" target="_blank" style="margin-top:0; width:80%; max-width:280px;"><i class="fab fa-spotify" style="color: #1DB954; margin-right: 8px;"></i> Playlist de la Boda</a>
+                <a href="#" id="sec-instagram" class="btn hidden" target="_blank" style="margin-top:0; width:80%; max-width:280px;"><i class="fab fa-instagram" style="color: #E1306C; margin-right: 8px;"></i> Compartir en Instagram</a>
+            </div>
+
+            <!-- Álbum fotográfico activable -->
+            <div id="sec-photo-album" class="hidden" style="margin-top: 50px; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 35px;">
+                <h2 class="script-font" style="font-size: 2.8em; line-height: 1;">Nuestra Galería</h2>
+                <p style="font-size: 0.8em; color: #666; margin-bottom: 15px;">Un vistazo a nuestros mejores momentos</p>
+                <div class="photo-grid" id="grid-photos-container">
+                    <!-- Las fotos se inyectan dinámicamente -->
+                </div>
+                <a href="#" id="lnk-album-download" class="btn" target="_blank"><i class="fas fa-cloud-download-alt" style="margin-right: 8px;"></i> Descargar Todo el Álbum</a>
+            </div>
+
+            <!-- Mensaje de Cierre -->
+            <p style="font-size: 0.8em; letter-spacing: 3px; margin-top: 60px; font-weight: 400;">CADA DETALLE ES MEJOR CONTIGO</p>
+            <h2 class="script-font" style="font-size: 3.5em; margin: 5px 0 40px 0; line-height: 1;">¡Te esperamos!</h2>
+
+            <div class="photo-container" style="margin-bottom: -15px; padding: 0;">
+                <img id="img-footer" src="" alt="Cierre Fotografía">
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ==========================================
+         LÓGICA JAVASCRIPT PRINCIPAL
+         ========================================== -->
+    <script>
+        // Control global del reproductor multimedia
+        let playing = false;
+        let toggleMusic = () => {};
+
+        // Función del sobre interactivo: inicia la simulación física de apertura y desvanece
+        function abrirInvitacion() {
+            const sobrePantalla = document.getElementById('pantalla-sobre');
+            if (sobrePantalla) {
+                sobrePantalla.classList.add('abriendo'); // Lanza animación de solapa
+            }
+            
+            // Disparador de audio directo
+            toggleMusic(true);
+            
+            // Remueve el contenedor de pantalla una vez finalizado el desplazamiento
+            setTimeout(() => {
+                if (sobrePantalla) {
+                    sobrePantalla.classList.add('ocultar-sobre');
+                }
+            }, 650);
+        }
+
+        // Función de copiado rápido al portapapeles con feedback de icono
+        function copiarDatosBancarios(event) {
+            event.stopPropagation(); 
+            const cuentaTexto = document.getElementById('txt-bank-account').innerText;
+            const icon = document.getElementById('icon-copy');
+
+            navigator.clipboard.writeText(cuentaTexto).then(() => {
+                // Éxito: cambio visual temporal
+                icon.className = "fas fa-check";
+                icon.style.color = "#4CAF50";
+
+                setTimeout(() => {
+                    icon.className = "far fa-copy";
+                    icon.style.color = "";
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar automáticamente: ', err);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Aplicación automática del esquema de colores seleccionado
+            document.body.className = `theme-${CONFIG.theme}`;
+
+            // Vinculación de los textos dinámicos dentro del sobre inicial premium
+            document.getElementById('sobre-txt-names').innerText = CONFIG.names;
+            document.getElementById('sobre-txt-date').innerText = CONFIG.dateStr;
+
+            // 2. Vinculación y renderizado de contenidos de CONFIG a la UI
+            document.getElementById('txt-names').innerText = CONFIG.names;
+            document.getElementById('txt-date').innerText = CONFIG.dateStr;
+            
+            document.getElementById('txt-ceremony-time').innerText = CONFIG.ceremony.time;
+            document.getElementById('txt-ceremony-place').innerText = CONFIG.ceremony.place;
+            document.getElementById('txt-ceremony-addr').innerText = CONFIG.ceremony.address;
+            document.getElementById('lnk-ceremony-map').href = CONFIG.ceremony.mapLink;
+
+            document.getElementById('txt-reception-time').innerText = CONFIG.reception.time;
+            document.getElementById('txt-reception-place').innerText = CONFIG.reception.place;
+            document.getElementById('txt-reception-addr').innerText = CONFIG.reception.address;
+            document.getElementById('lnk-reception-map').href = CONFIG.reception.mapLink;
+
+            document.getElementById('txt-dress-style').innerText = CONFIG.dressCode.style;
+            document.getElementById('txt-dress-note').innerText = CONFIG.dressCode.note;
+            
+            document.getElementById('txt-gifts-text').innerText = CONFIG.gifts.text;
+            document.getElementById('img-gifts-qr').src = CONFIG.gifts.qrImage;
+
+            // Rellenar datos bancarios dinámicos desde CONFIG
+            document.getElementById('txt-bank-name').innerText = CONFIG.gifts.bankName;
+            document.getElementById('txt-bank-titular').innerText = CONFIG.gifts.titular;
+            document.getElementById('txt-bank-account').innerText = CONFIG.gifts.accountNumber;
+
+            document.getElementById('txt-rsvp-deadline').innerText = CONFIG.rsvp.deadline;
+            document.getElementById('lnk-rsvp-form').href = CONFIG.rsvp.googleFormLink;
+            document.getElementById('lnk-playlist').href = CONFIG.playlistLink;
+
+            // 3. Render de imágenes primarias
+            document.getElementById('img-main').src = CONFIG.images.main;
+            document.getElementById('img-second').src = CONFIG.images.second;
+            document.getElementById('img-footer').src = CONFIG.images.footer;
+
+            // 4. Módulos Condicionales Activables/Desactivables (Features)
+            if (CONFIG.features.showItinerary) {
+                document.getElementById('sec-itinerary').classList.remove('hidden');
+            } else {
+                document.getElementById('sec-itinerary').classList.add('hidden');
+            }
+
+            if (CONFIG.features.showInstagram) {
+                const igBtn = document.getElementById('sec-instagram');
+                igBtn.classList.remove('hidden');
+                igBtn.href = CONFIG.features.instagramLink;
+            }
+
+            if (CONFIG.features.showPhotoAlbum) {
+                const albumSec = document.getElementById('sec-photo-album');
+                albumSec.classList.remove('hidden');
+                document.getElementById('lnk-album-download').href = CONFIG.features.albumDownloadLink;
+                
+                const grid = document.getElementById('grid-photos-container');
+                grid.innerHTML = ""; 
+                CONFIG.features.albumPhotos.forEach(src => {
+                    let img = document.createElement('img');
+                    img.src = src;
+                    img.alt = "Momento fotográfico";
+                    grid.appendChild(img);
+                });
+            }
+
+            // Secciones Libres/Vacías editables por el usuario
+            if (CONFIG.features.showExtraSection1) {
+                const extra1 = document.getElementById('extra-sec-1');
+                extra1.classList.remove('hidden');
+                document.getElementById('txt-extra1-title').innerText = CONFIG.features.extraSection1Title;
+                document.getElementById('txt-extra1-content').innerHTML = CONFIG.features.extraSection1Content;
+            }
+
+            if (CONFIG.features.showExtraSection2) {
+                const extra2 = document.getElementById('extra-sec-2');
+                extra2.classList.remove('hidden');
+                document.getElementById('txt-extra2-title').innerText = CONFIG.features.extraSection2Title;
+                document.getElementById('txt-extra2-content').innerHTML = CONFIG.features.extraSection2Content;
+            }
+
+            // 5. Motor e Interfaz del Reproductor de Música
+            const audio = document.getElementById('audio-player');
+            const playBtn = document.getElementById('music-btn');
+            const musicLabel = document.getElementById('txt-music-title');
+            
+            audio.src = CONFIG.music.file;
+            musicLabel.innerText = CONFIG.music.title;
+            
+            toggleMusic = (forcePlay = false) => {
+                if (playing && !forcePlay) {
+                    audio.pause();
+                    playBtn.classList.replace('fa-pause-circle', 'fa-play-circle');
+                    playing = false;
+                } else {
+                    audio.play().then(() => {
+                        playBtn.classList.replace('fa-play-circle', 'fa-pause-circle');
+                        playing = true;
+                    }).catch(err => {
+                        console.log("Audio en espera del clic definitivo de apertura de sobre.");
+                    });
+                }
+            };
+
+            playBtn.addEventListener('click', () => toggleMusic(false));
+
+            // 6. Motor Dinámico del Reloj de Cuenta Regresiva
+            const targetTime = new Date(CONFIG.dateTarget).getTime();
+            
+            const countdownEngine = setInterval(() => {
+                const now = new Date().getTime();
+                const diff = targetTime - now;
+
+                if (diff < 0) {
+                    clearInterval(countdownEngine);
+                    document.getElementById("cd-days").innerText = "00";
+                    document.getElementById("cd-hours").innerText = "00";
+                    document.getElementById("cd-mins").innerText = "00";
+                    document.getElementById("cd-secs").innerText = "00";
+                    return;
+                }
+
+                const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+                document.getElementById("cd-days").innerText = d.toString().padStart(2, '0');
+                document.getElementById("cd-hours").innerText = h.toString().padStart(2, '0');
+                document.getElementById("cd-mins").innerText = m.toString().padStart(2, '0');
+                document.getElementById("cd-secs").innerText = s.toString().padStart(2, '0');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
