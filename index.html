@@ -177,13 +177,15 @@ body.theme-emerald {
             border-radius: 8px; overflow: hidden; 
         }
         
-        .script-font { font-family: 'Alex Brush', cursive; }
-        .serif-font { font-family: 'Playfair Display', serif; }
-        h1, h2, h3 { text-align: center; font-weight: normal; }
-        
-       .section-dark {
-    /* Usamos un degradado que va de luz a sombra sobre tu color principal */
+        .section-dark {
+    /* Degradado sutil para dar profundidad */
     background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(0,0,0,0.2) 100%), var(--primary-color) !important;
+    
+    /* Propiedades adicionales */
+    color: var(--text-light);
+    padding: 60px 25px;
+    text-align: center;
+}
     
     /* Mezcla de capa para que el degradado interactúe con el color real */
     background-blend-mode: overlay;
