@@ -232,23 +232,34 @@
          ========================================== -->
     <script>
         const CONFIG = {
-            theme: "boho", 
-            names: "Fernanda & Gustavo",
-            dateStr: "14 . 11 . 2026",
-            dateTarget: "Nov 14, 2026 16:30:00", 
-            music: { file: "musica.mp3", title: "Nuestra Canción" },
-            images: { main: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc", second: "https://images.unsplash.com/photo-1520854221256-17451cc331bf", footer: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486" },
-            ceremony: { time: "16:30 horas", place: "PARROQUIA SAN FRANCISCO", address: "Av. Las Flores 2020, Montevideo", mapLink: "https://maps.google.com" },
-            reception: { time: "18:00 horas", place: "QUINTA LOS SUEÑOS", address: "Camino Vecinal Km 4.5, Montevideo", mapLink: "https://maps.google.com" },
-            dressCode: { style: "Formal / Elegante", note: "Agradecemos evitar prendas de color blanco, beige o tonos similares." },
-            gifts: { text: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, te compartimos nuestros datos:", showQR: false, qrImage: "", bankName: "BROU", titular: "Fernanda & Gustavo", accountNumber: "0123456789" },
-            rsvp: { deadline: "01 de Noviembre de 2026", googleFormLink: "https://forms.google.com" },
-            playlistLink: "https://open.spotify.com", 
-            features: {
-                showItinerary: true, showInstagram: true, instagramLink: "https://instagram.com", showPhotoAlbum: true, photoUploadLink: "https://forms.google.com", 
-                albumPhotos: ["https://images.unsplash.com/photo-1606800052052-a08af7148866", "https://images.unsplash.com/photo-1519225421980-715cb0215aed"],
-            }
-        };
+        theme: "boho", 
+        names: "Fernanda & Gustavo",
+        dateStr: "14 . 11 . 2026",
+        dateTarget: "Nov 14, 2026 16:30:00", 
+        
+        // 1. Corrige la extensión de la música aquí
+        music: { file: "musica.mp3", title: "Nuestra Canción" },
+        
+        // 2. Coloca los nombres de las fotos sueltas
+        images: { 
+            main: "foto1.jpg", 
+            second: "foto2.jpg", 
+            footer: "foto3.jpg" 
+        },
+        
+        ceremony: { time: "16:30 horas", place: "PARROQUIA SAN FRANCISCO", address: "Av. Las Flores 2020, Montevideo", mapLink: "https://maps.google.com" },
+        reception: { time: "18:00 horas", place: "QUINTA LOS SUEÑOS", address: "Camino Vecinal Km 4.5, Montevideo", mapLink: "https://maps.google.com" },
+        dressCode: { style: "Formal / Elegante", note: "Agradecemos evitar prendas de color blanco, beige o tonos similares." },
+        gifts: { text: "Tu presencia es nuestro mejor regalo. Si deseas tener un detalle con nosotros, te compartimos nuestros datos:", showQR: false, qrImage: "", bankName: "BROU", titular: "Fernanda & Gustavo", accountNumber: "0123456789" },
+        rsvp: { deadline: "01 de Noviembre de 2026", googleFormLink: "https://forms.google.com" },
+        playlistLink: "https://open.spotify.com", 
+        features: {
+            showItinerary: true, showInstagram: true, instagramLink: "https://instagram.com", showPhotoAlbum: true, photoUploadLink: "https://forms.google.com", 
+            
+            // 3. Coloca el resto de tus fotos para la galería aquí
+            albumPhotos: ["foto4.jpg", "foto5.jpg", "foto6.jpg", "foto7.jpg"],
+        }
+    };
     </script>
 
     <!-- ==========================================
